@@ -12,7 +12,7 @@
                     <h3>Men’s eyewear
                                 <span>Cool summer sale 50% off</span>
                             </h3>
-                    <a href="shop.html" class="btn btn-sm animated-button gibson-three mt-4">Shop Now</a>
+                    <a href="{{url('menu')}}" class="btn btn-sm animated-button gibson-three mt-4">Shop Now</a>
                 </div>
             </div>
             <div class="carousel-item item2">
@@ -20,7 +20,7 @@
                     <h3>Women’s eyewear
                                 <span>Want to Look Your Best?</span>
                             </h3>
-                    <a href="shop.html" class="btn btn-sm animated-button gibson-three mt-4">Shop Now</a>
+                    <a href="{{url('menu')}}" class="btn btn-sm animated-button gibson-three mt-4">Shop Now</a>
 
                 </div>
             </div>
@@ -29,7 +29,7 @@
                     <h3>Men’s eyewear
                                 <span>Cool summer sale 50% off</span>
                             </h3>
-                    <a href="shop.html" class="btn btn-sm animated-button gibson-three mt-4">Shop Now</a>
+                    <a href="{{url('menu')}}" class="btn btn-sm animated-button gibson-three mt-4">Shop Now</a>
 
                 </div>
             </div>
@@ -38,7 +38,7 @@
                     <h3>Women’s eyewear
                                 <span>Want to Look Your Best?</span>
                             </h3>
-                    <a href="shop.html" class="btn btn-sm animated-button gibson-three mt-4">Shop Now</a>
+                    <a href="{{url('menu')}}" class="btn btn-sm animated-button gibson-three mt-4">Shop Now</a>
                 </div>
             </div>
         </div>

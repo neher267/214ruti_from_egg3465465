@@ -3,13 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\ContactRequest;
+use App\Inquiry;
+use Carbon\Carbon;
 
-use Cart;
-use App\Order;
-use App\OrderDetail;
-use Sentinel;
 
-class OrderController extends Controller
+class InquiryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,7 +17,10 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+    	$title = "Inquiryes";
+        $inquiryes = Inquiry::latest()->get();       
+
+        return view('backend.hr.inquiry.index', compact('inquiryes', 'title'));
     }
 
     /**
@@ -37,22 +39,11 @@ class OrderController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ContactRequest $request)
     {
-        $order = new Order;
-        $order->s_address = $request->s_address;
-        $order->notes = $request->notes;
-        $order->user()->associate(Sentinel::getUser())->save();
-        foreach (Cart::content() as $content) {
-            $orderDetails = new OrderDetail;
-            $orderDetails->order()->associate($order);
-            $orderDetails->product()->associate($content->id);
-            $orderDetails->quantity = $content->qty;
-            $orderDetails->price = $content->price;
-            $orderDetails->save();
-        }
-        Cart::destroy();
-        return redirect('/')->withSuccess('You order is placed successfully! We will contact you soon. Thank you for your order.');      
+        Inquiry::create($request->all());
+
+        return back()->withSuccess("Thanks for your Inquiry..");
     }
 
     /**
@@ -63,11 +54,11 @@ class OrderController extends Controller
      */
     public function show($id)
     {
-        $order = Order::find($id);
-        $inquiry = $order->inquiry()->first();
-        $page_title = 'Order Details';
-
-        return view('layouts.backend2.pages.orders.show', compact('order', 'inquiry', 'page_title'));
+    	$inquiry = Inquiry::find($id);
+    	$title = "Details";
+    	$inquiry->read_at = Carbon::now()->toDateTimeString();
+        $inquiry->save();
+        return view('backend.hr.inquiry.show', compact('inquiry', 'title'));
     }
 
     /**
@@ -99,8 +90,9 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Inquiry $inquiry)
     {
-        //
+        $inquiry->delete();
+        return back()->withSuccess('Delete Success!');
     }
 }

@@ -26,6 +26,8 @@ class PublicController extends Controller
 
     // bread 
     public function menu_item_details(Product $product){
+
+        $current_page = "Menu";
         return view('frontend.pages.product-details', compact('product'));
     }
 

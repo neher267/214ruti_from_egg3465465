@@ -25,7 +25,23 @@ class CartController extends Controller
     	//Cart::destroy();
     	//dd(Cart::content());
     	//dd($product);
-    	return back();
+    	return back()->withSuccess('One Item added..');
+    }
+
+    public function add_to_cart(Product $product, Request $request)
+    {
+
+        Cart::add($product, $request->qty, ['image'=>$product->thumbnail]);        
+        return back()->withSuccess($request->qty.'item(s) added.');
+    }
+
+    public function cart_update(Request $request)
+    {
+        $rowId = $request->rowId;     
+        $qty = (int) Cart::get($rowId)->qty + (int)$request->qty;   
+        $price = (int) Cart::get($rowId)->price * $qty; 
+        Cart::update($rowId, $qty);
+        return back();
     }
 
     public function increate_qty(Request $request)
@@ -51,8 +67,10 @@ class CartController extends Controller
 
     public function remove_item(Request $request)
     {
-        Cart::remove($request->rowid);
-        return ['count'=>$this->count, 'subtotal'=>$this->subtotal];
-    }    
+        Cart::remove($request->rowId);
+        return back()->withSuccess('Removed.');
+    }
+
+
 
 }

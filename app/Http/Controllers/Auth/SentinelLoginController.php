@@ -18,9 +18,14 @@ class SentinelLoginController extends Controller
     {
         //dd($request->all());
         Sentinel::authenticate($request->all());
-    	if(Sentinel::check())
+    	if( $user = Sentinel::check())
     	{
-            return redirect('/dashboard');
+            if ($user->roles()->first()->slug == 'customer') {
+                return redirect('/');
+            }
+            else{
+                return redirect('/dashboard');
+            }            
     	}
     	else
     		return redirect()->back();

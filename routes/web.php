@@ -21,6 +21,8 @@ Route::post('logout', 'Auth\SentinelLoginController@logout')->middleware('sentin
 Route::group(['namespace'=>'Auth', 'middleware'=>['guest']], function(){
 	Route::post('login','SentinelLoginController@post_login');
 	Route::get('login','SentinelLoginController@login');
+	Route::get('signup','CustomerRegisterController@create');
+	Route::post('signup','CustomerRegisterController@store');
 });
 
 Route::group(['middleware'=>['sentinel.auth']], function(){
@@ -39,13 +41,24 @@ Route::get('menu/{product}', 'PublicController@menu_item_details')->name('food-d
 
 // cart 
 Route::post('cart/{product}/add', 'CartController@add')->name('cart.add');
+Route::post('add-to-cart/{product}', 'CartController@add_to_cart')->name('add-to-cart');
 Route::post('increate-qty', 'CartController@increate_qty');
 Route::post('decrease-qty', 'CartController@decrease_qty');
 Route::post('remove-item', 'CartController@remove_item');
+Route::post('cart', 'AjaxRequestController@cart');
+
+Route::post('cart-update', 'CartController@cart_update');
 
 Route::resource('checkout','CheckoutController');
-Route::resource('place-order','OrderController');
+Route::resource('orders','OrderController');
 //end cart
+
+//inquiries
+Route::get('dashboard/inquiries', 'InquiryController@index')->middleware('admen');
+Route::post('inquiries', 'InquiryController@store');
+Route::get('dashboard/inquiries/{inquiry}', 'InquiryController@show')->middleware('admen')->name('inquiries.show');
+
+//end inquiries
 
 // Admen panel 
 

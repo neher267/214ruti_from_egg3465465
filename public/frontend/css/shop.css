@@ -234,7 +234,7 @@ button.top_googles_cart {
 
 #staplesbmincart .sbmincart-details-name {
 	float: left;
-	width: 58%;
+	width: 60%;
 }
 
 #staplesbmincart .sbmincart-details-quantity {
@@ -1573,9 +1573,9 @@ span.item_price {
 		padding: 0;
 	}
 	#staplesbmincart {
-		left: 17%;
-		top: 15.9%;
-		width: 294px;
+		left: 1%;
+		top: 18%;
+		width: 98%;
 	}
 	.single-right-left h3 {
 		font-size: 18px;

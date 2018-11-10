@@ -50,26 +50,28 @@
                 </div>
             </div>
             <div class="contact_grid_right">
-                <form action="#" method="post">
+                <form action="{{url('inquiries')}}" method="post">
+                    {{ csrf_field() }}
+
                     <div class="row contact_left_grid">
                         <div class="col-md-6 con-left">
                             <div class="form-group">
                                 <label class="my-2">Name</label>
-                                <input class="form-control" type="text" name="Name" placeholder="" required="">
+                                <input class="form-control" type="text" name="name" placeholder="" required="">
                             </div>
                             <div class="form-group">
                                 <label>Email</label>
-                                <input class="form-control" type="email" name="Email" placeholder="" required="">
+                                <input class="form-control" type="email" name="email" placeholder="" required="">
                             </div>
                             <div class="form-group">
                                 <label class="my-2">Subject</label>
-                                <input class="form-control" type="text" name="Subject" placeholder="" required="">
+                                <input class="form-control" type="text" name="subject" placeholder="" required="">
                             </div>
                         </div>
                         <div class="col-md-6 con-right">
                             <div class="form-group">
                                 <label>Message</label>
-                                <textarea id="textarea" placeholder="" required=""></textarea>
+                                <textarea name="message" id="textarea" placeholder="Your Message" required></textarea>
                             </div>
                             <input class="form-control" type="submit" value="Submit">
 

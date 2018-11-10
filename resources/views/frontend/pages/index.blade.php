@@ -3,7 +3,8 @@
 <section class="banner-bottom-wthreelayouts py-lg-5 py-3">
     <div class="container-fluid">
         <div class="inner-sec-shop px-lg-4 px-3">
-            <h3 class="tittle-w3layouts my-lg-4 my-4">New Arrivals for you </h3>
+            <h3 class="tittle-w3layouts my-lg-4 my-4 text-center">CHOOSE YOUR FOODS</h3>
+            <hr>
 
             <!-- row -->
             @foreach($foods as $foodsChunk)

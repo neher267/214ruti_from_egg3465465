@@ -14,12 +14,37 @@
     </div>
 
     <div class="col-md-3 top-info-cart text-right mt-lg-4">
-        <ul class="cart-inner-info">
+        <ul class="cart-inner-info">           
+
+            @if($user = Sentinel::check())                
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
+                    <span class="fa fa-user" aria-hidden="true"> <span class="caret"></span>
+                </a>
+
+                <ul class="dropdown-menu">
+                    <li>
+                        <a href="{{url('logout')}}"
+                            onclick="event.preventDefault();
+                                     document.getElementById('logout-form').submit();">
+                            Logout
+                        </a>
+
+                        <form id="logout-form" action="{{url('logout')}}" method="POST" style="display: none;">
+                            {{ csrf_field() }}
+                        </form>
+                    </li>
+                </ul>
+            </li>
+            @else
+                
             <li class="button-log">
                 <a class="btn-open" href="#">
-                    <span class="fa fa-user" aria-hidden="true"></span>
-                </a>
+                    <span class="fa fa-user" aria-hidden="true"></i></span>
+                </a>                
             </li>
+            @endif 
+
             <li class="galssescart galssescart2 cart cart box_1">
                 <form action="#" method="post" class="last">
                     <input type="hidden" name="cmd" value="_cart">
@@ -29,7 +54,7 @@
                         <i class="fas fa-cart-arrow-down"></i>                        
                     </button>                    
                 </form>                
-            </li>
+            </li>           
         </ul>
 
         
@@ -47,15 +72,16 @@
                         <div class="form-group">
                             <label class="mb-2">Mobile No</label>
                             <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="" required="" name="mobile">
-                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                            <small id="emailHelp" class="form-text text-muted">We'll never share your mobile no with anyone else.</small>
                         </div>
                         <div class="form-group">
                             <label class="mb-2">Password</label>
                             <input type="password" class="form-control" id="exampleInputPassword1" placeholder="" required="" name="password">
                         </div>
-                        <div class="form-check mb-2">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                        <div class="form-group">
+                            <label class="" for="exampleCheck1">Not a account? 
+                                <a href="{{url('signup')}}">Create Account</a>
+                            </label>
                         </div>
                         <button type="submit" class="btn btn-primary submit mb-4">Sign In</button>
 

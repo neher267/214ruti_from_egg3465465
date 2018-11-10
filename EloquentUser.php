@@ -46,6 +46,7 @@ class EloquentUser extends Model implements RoleableInterface, PermissibleInterf
         'branch_id',
         'mobile',
         'name',
+        'address',
         'points',
         'password',
         'permissions',
