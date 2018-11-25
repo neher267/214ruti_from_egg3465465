@@ -3,41 +3,57 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Cart;
 
 class AjaxRequestController extends Controller
 {
+    
     public function cart(Request $request)
     {
-    	$rowId = $request->rowid;     
-        $qty = (int) Cart::get($rowId)->qty + 1;   
-        $price = (int) Cart::get($rowId)->price * $qty; 
-        Cart::update($rowId, $qty);
-        $subtotal = Cart::subtotal();
-        $count = Cart::count();
-        return ['qty'=>$qty, 'price'=> $price, 'count'=>$this->count, 'subtotal'=>$subtotal ];
+        switch ($request->type) {
+            case 'increase':
+                return $this->increase($request->id);
+                break;
+            case 'decrease':
+                return $this->decrease($request->id);
+                break;
+            case 'remove':
+                return $this->remove($request->id);
+                break;
+        }
     }
 
-    protected function increate(Request $request)
+    public function increase($rowId)
     {
-        $rowId = $request->rowid;     
         $qty = (int) Cart::get($rowId)->qty + 1;   
-        $price = (int) Cart::get($rowId)->price * $qty; 
         Cart::update($rowId, $qty);
-        return ['qty'=>$qty, 'price'=> $price, 'count'=>$this->count, 'subtotal'=>$this->subtotal];
+        $data = $this->getValues();
+        $data['qty'] = $qty;
+        return $data;
     }
 
-    protected function decrease(Request $request)
+    protected function decrease($rowId)
     {
-        $rowId = $request->rowid;     
-        $qty = (int) Cart::get($rowId)->qty -1;
-        $price = (int) Cart::get($rowId)->price * $qty; 
+        $qty = (int) Cart::get($rowId)->qty - 1;   
         Cart::update($rowId, $qty);
-        return ['qty'=>$qty, 'price'=> $price, 'count'=>$this->count, 'subtotal'=>$this->subtotal];
+        $data = $this->getValues();
+        $data['qty'] = $qty;
+        return $data;
     }    
 
-    protected function remove($id)
+    protected function remove($rowId)
     {
-        Cart::remove($id);
-        return ['count'=>$this->count, 'subtotal'=>$this->subtotal];
+        Cart::remove($rowId);
+        $data = $this->getValues();
+        $data['qty'] = 0;
+        return $data;
     } 
+
+    protected function getValues()
+    {
+        $data = array();
+        $data['totalQty'] = Cart::count();  
+        $data['subtotal'] = Cart::subtotal();
+        return $data;
+    }
 }

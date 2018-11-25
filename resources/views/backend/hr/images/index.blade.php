@@ -47,7 +47,8 @@
 								</td>						
 								
 
-								<td>									
+								<td>	
+									<a href="" class="btn btn-info"><i class="fa fa-edit"></i> Details</a>								
 									@if($image->status)
 										<form action="{{route('images.update',[$image])}}" method="POST" style="display: inline;">
 											{{ csrf_field() }}

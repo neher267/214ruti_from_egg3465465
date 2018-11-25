@@ -6,6 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="utf-8">
 	<meta name="keywords" content="Resturent, Bangla Resturent" />
+	<meta name="c_url" content="{{url('cart')}}">
 	<script>
 		addEventListener("load", function () {
 			setTimeout(hideURLbar, 0);
@@ -77,7 +78,7 @@
 		<div class="container-fluid px-lg-5 px-3">
 			<div class="copyright-w3layouts mt-4">
 				<p class="copy-right">{{config('app.name')}} | Design by
-					<a href="http://w3layouts.com/" style="color: #333"> W3layouts </a>
+					<a href="#" style="color: #333"> W3layouts </a>
 				</p>
 			</div>
 		</div>
@@ -151,14 +152,14 @@
 	                    </button>	                    
 	                </div>
 
-	                <div class="sbmincart-details-price" style="float: right;"> <span class="sbmincart-price">৳{{$content->qty}}x{{$content->price}}</span> </div>
+	                <div class="sbmincart-details-price" style="float: right;"> <span class="sbmincart-price">৳<span id="{{$content->rowId}}qty">{{$content->qty}}</span>x{{$content->price}}</span> </div>
 	                
 	            </li>
 	            @endforeach	            
 	        </ul>
 
 	        <div class="sbmincart-footer">
-	            <div class="sbmincart-subtotal"> Subtotal: ৳{{Cart::subtotal()}} </div>
+	            <div class="sbmincart-subtotal"> Subtotal: ৳<span id="cart_subtotal">{{Cart::subtotal()}}</span> </div>
 	            <a href="{{route('checkout.index')}}" class="sbmincart-submit">Check Out</a>
 	        </div>
 	        <input type="hidden" name="cmd" value="_cart">
@@ -171,12 +172,17 @@
 	<script type="text/javascript">
 		function cart(id, type)
 	    {
-	    	axios.post('http://neher.test/bread/public/cart', {
+	    	axios.post($('meta[name=c_url]').attr("content"), {
 			    id: id,
 			    type: type
 			})
 			.then(function (response) {
-			    console.log(response);
+				$('#cart_subtotal').html(response.data.subtotal);
+				$('#total_items').html(response.data.totalQty);
+				if(response.data.qty > 0)
+					$('#'+id+'qty').html(response.data.qty);
+				else
+					$('#'+id).remove();
 			})
 			.catch(function (error) {
 			    console.log(error);

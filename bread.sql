@@ -21,9 +21,9 @@ CREATE TABLE IF NOT EXISTS `activations` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table bread.activations: ~7 rows (approximately)
+-- Dumping data for table bread.activations: ~13 rows (approximately)
 /*!40000 ALTER TABLE `activations` DISABLE KEYS */;
 INSERT INTO `activations` (`id`, `user_id`, `code`, `completed`, `completed_at`, `created_at`, `updated_at`) VALUES
 	(1, 1, 'wHcbkzpgQja5OoOyaapsDyNRlv10t6Nj', 1, '2018-03-07 07:25:12', '2018-03-07 07:25:12', '2018-03-07 07:25:12'),
@@ -32,7 +32,13 @@ INSERT INTO `activations` (`id`, `user_id`, `code`, `completed`, `completed_at`,
 	(4, 5, 'Yn6J67Rk1ysH9EuVFBSTfKnR75jBXGba', 1, '2018-03-09 07:13:22', '2018-03-09 07:13:22', '2018-03-09 07:13:22'),
 	(5, 6, 'A3JwyeQFeUXIAGbLHuOP3gZzesZ3ZtqA', 1, '2018-03-10 11:36:28', '2018-03-10 11:36:28', '2018-03-10 11:36:28'),
 	(6, 7, 'b4cuI5cJNgXwFDhMieQ6oqRcYjplK20Z', 1, '2018-04-20 15:18:35', '2018-04-20 15:18:35', '2018-04-20 15:18:35'),
-	(7, 8, 'bEMgYunFQTpTmia6AJYviTjU0l7XL6jY', 1, '2018-05-15 06:11:28', '2018-05-15 06:11:28', '2018-05-15 06:11:28');
+	(7, 8, 'bEMgYunFQTpTmia6AJYviTjU0l7XL6jY', 1, '2018-05-15 06:11:28', '2018-05-15 06:11:28', '2018-05-15 06:11:28'),
+	(8, 9, 'ZyRaJY22OdmjqfBdsPvNnqwRjMHlzg9J', 1, '2018-11-04 07:14:25', '2018-11-04 07:14:25', '2018-11-04 07:14:25'),
+	(9, 10, 'p5GCy4YGkLFwVj4h3rDin7k9QjatbXLE', 1, '2018-11-04 07:19:02', '2018-11-04 07:19:02', '2018-11-04 07:19:02'),
+	(10, 11, 'rKZCJgBp04Osost780mBjaHm4Ud4BJNp', 1, '2018-11-04 07:19:58', '2018-11-04 07:19:58', '2018-11-04 07:19:58'),
+	(11, 12, 'dqJJnd8tAtkQQYpEieTOIQzLicpXbB5n', 1, '2018-11-04 07:21:55', '2018-11-04 07:21:55', '2018-11-04 07:21:55'),
+	(12, 13, 'oLMAs9C6vSNWr7VRdLS1cEtSr0J3guf2', 1, '2018-11-04 07:44:29', '2018-11-04 07:44:29', '2018-11-04 07:44:29'),
+	(13, 14, 'ZxrYYFl6pwrgBriPC43CILygAlbuKGte', 1, '2018-11-04 07:56:18', '2018-11-04 07:56:18', '2018-11-04 07:56:18');
 /*!40000 ALTER TABLE `activations` ENABLE KEYS */;
 
 -- Dumping structure for table bread.addresses
@@ -218,15 +224,37 @@ INSERT INTO `images` (`id`, `imageable_id`, `imageable_type`, `type`, `status`, 
 	(6, NULL, 'main-slider', 'main-slider', 1, 'images/site/1540446595.jpg', '2018-10-25 05:49:55', '2018-10-25 05:49:55');
 /*!40000 ALTER TABLE `images` ENABLE KEYS */;
 
+-- Dumping structure for table bread.inquiries
+CREATE TABLE IF NOT EXISTS `inquiries` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `subject` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `message` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `read_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Dumping data for table bread.inquiries: ~4 rows (approximately)
+/*!40000 ALTER TABLE `inquiries` DISABLE KEYS */;
+INSERT INTO `inquiries` (`id`, `name`, `email`, `subject`, `message`, `read_at`, `created_at`, `updated_at`) VALUES
+	(1, 'Neher', 'neher@eclsystem.com', 'Test', 'Test message', '2018-11-08 13:43:15', '2018-11-08 06:39:17', '2018-11-08 13:43:15'),
+	(2, 'Neher', 'neher@eclsystem.com', 'Test2', 'Test message', '2018-11-08 13:43:20', '2018-11-08 06:39:17', '2018-11-08 13:43:20'),
+	(3, 'Shreshtha', 'shreshtha@gmail.com', 'Another Test', 'Hello ...', '2018-11-08 13:43:08', '2018-11-08 13:26:48', '2018-11-08 13:43:08'),
+	(4, 'Shreshtha', 'shreshtha@gmail.com', 'Another Test2', 'Hello Bread', NULL, '2018-11-08 14:17:02', '2018-11-08 14:17:02');
+/*!40000 ALTER TABLE `inquiries` ENABLE KEYS */;
+
 -- Dumping structure for table bread.migrations
 CREATE TABLE IF NOT EXISTS `migrations` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table bread.migrations: ~18 rows (approximately)
+-- Dumping data for table bread.migrations: ~21 rows (approximately)
 /*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 	(1, '2014_07_02_230147_migration_cartalyst_sentinel', 1),
@@ -246,7 +274,10 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 	(15, '2018_02_18_085022_create_expences_table', 1),
 	(16, '2018_02_18_085040_create_adderesses_table', 1),
 	(17, '2018_02_20_060101_create_areas_table', 1),
-	(18, '2018_02_20_060425_create_districts_table', 1);
+	(18, '2018_02_20_060425_create_districts_table', 1),
+	(23, '2018_10_27_072348_create_orders_table', 2),
+	(24, '2018_10_27_072423_create_order_details_table', 2),
+	(25, '2018_11_08_061952_create_inquiries_table', 2);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 
 -- Dumping structure for table bread.mix_products
@@ -265,6 +296,37 @@ CREATE TABLE IF NOT EXISTS `mix_products` (
 -- Dumping data for table bread.mix_products: ~0 rows (approximately)
 /*!40000 ALTER TABLE `mix_products` DISABLE KEYS */;
 /*!40000 ALTER TABLE `mix_products` ENABLE KEYS */;
+
+-- Dumping structure for table bread.orders
+CREATE TABLE IF NOT EXISTS `orders` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` int(10) unsigned NOT NULL,
+  `s_address` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `notes` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT 0,
+  `payment_status` tinyint(4) NOT NULL DEFAULT 0,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Dumping data for table bread.orders: ~0 rows (approximately)
+/*!40000 ALTER TABLE `orders` DISABLE KEYS */;
+/*!40000 ALTER TABLE `orders` ENABLE KEYS */;
+
+-- Dumping structure for table bread.order_details
+CREATE TABLE IF NOT EXISTS `order_details` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `order_id` int(10) unsigned NOT NULL,
+  `product_id` int(10) unsigned NOT NULL,
+  `price` decimal(6,2) NOT NULL,
+  `quantity` decimal(5,0) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Dumping data for table bread.order_details: ~0 rows (approximately)
+/*!40000 ALTER TABLE `order_details` DISABLE KEYS */;
+/*!40000 ALTER TABLE `order_details` ENABLE KEYS */;
 
 -- Dumping structure for table bread.packages
 CREATE TABLE IF NOT EXISTS `packages` (
@@ -308,13 +370,12 @@ CREATE TABLE IF NOT EXISTS `persistences` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `persistences_code_unique` (`code`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table bread.persistences: ~1 rows (approximately)
 /*!40000 ALTER TABLE `persistences` DISABLE KEYS */;
 INSERT INTO `persistences` (`id`, `user_id`, `code`, `created_at`, `updated_at`) VALUES
-	(2, 3, 'I0d8gTt2MzMsQ5varDp9c12mrpKNM8zR', '2018-10-24 11:36:22', '2018-10-24 11:36:22'),
-	(3, 3, 'aAJju86fZ9bmoH1bj2re874jGTeaIcKg', '2018-10-25 04:34:41', '2018-10-25 04:34:41');
+	(9, 3, 'US1OsNVULSeo1gutSc2jXsfbkIUVJNaV', '2018-11-08 06:41:05', '2018-11-08 06:41:05');
 /*!40000 ALTER TABLE `persistences` ENABLE KEYS */;
 
 -- Dumping structure for table bread.prices
@@ -410,7 +471,7 @@ CREATE TABLE IF NOT EXISTS `roles` (
 -- Dumping data for table bread.roles: ~6 rows (approximately)
 /*!40000 ALTER TABLE `roles` DISABLE KEYS */;
 INSERT INTO `roles` (`id`, `slug`, `name`, `weight`, `permissions`, `created_at`, `updated_at`) VALUES
-	(1, 'admin', 'Admin', 100, NULL, '2018-03-06 10:17:22', '2018-04-18 15:10:52'),
+	(1, 'admen', 'Admen', 100, NULL, '2018-03-06 10:17:22', '2018-04-18 15:10:52'),
 	(3, 'buyer', 'Buyer', 50, NULL, '2018-03-08 06:31:53', '2018-05-15 06:07:35'),
 	(4, 'customer', 'Customer', 999, NULL, '2018-03-09 05:49:31', '2018-04-20 06:33:20'),
 	(5, 'managing_director', 'Managing Director', 150, NULL, '2018-03-09 05:49:44', '2018-05-15 06:01:20'),
@@ -427,13 +488,19 @@ CREATE TABLE IF NOT EXISTS `role_users` (
   PRIMARY KEY (`user_id`,`role_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table bread.role_users: ~4 rows (approximately)
+-- Dumping data for table bread.role_users: ~8 rows (approximately)
 /*!40000 ALTER TABLE `role_users` DISABLE KEYS */;
 INSERT INTO `role_users` (`user_id`, `role_id`, `created_at`, `updated_at`) VALUES
 	(3, 1, '2018-03-08 05:56:22', '2018-03-08 05:56:22'),
 	(5, 1, '2018-03-09 07:13:22', '2018-03-09 07:13:22'),
 	(6, 3, '2018-03-10 11:36:28', '2018-03-10 11:36:28'),
-	(8, 8, '2018-05-15 06:11:29', '2018-05-15 06:11:29');
+	(8, 8, '2018-05-15 06:11:29', '2018-05-15 06:11:29'),
+	(9, 4, '2018-11-04 07:14:26', '2018-11-04 07:14:26'),
+	(10, 4, '2018-11-04 07:19:02', '2018-11-04 07:19:02'),
+	(11, 4, '2018-11-04 07:19:59', '2018-11-04 07:19:59'),
+	(12, 4, '2018-11-04 07:21:55', '2018-11-04 07:21:55'),
+	(13, 4, '2018-11-04 07:44:29', '2018-11-04 07:44:29'),
+	(14, 4, '2018-11-04 07:56:18', '2018-11-04 07:56:18');
 /*!40000 ALTER TABLE `role_users` ENABLE KEYS */;
 
 -- Dumping structure for table bread.stocks
@@ -499,6 +566,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `branch_id` int(10) unsigned DEFAULT NULL,
   `mobile` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `address` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `points` decimal(6,0) NOT NULL DEFAULT 0,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `permissions` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -507,17 +575,23 @@ CREATE TABLE IF NOT EXISTS `users` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_mobile_unique` (`mobile`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table bread.users: ~6 rows (approximately)
+-- Dumping data for table bread.users: ~12 rows (approximately)
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` (`id`, `branch_id`, `mobile`, `name`, `points`, `password`, `permissions`, `last_login`, `created_at`, `updated_at`) VALUES
-	(3, 1, '01784255196', 'Admin', 100, '$2y$10$WN15GCnF6IsJo/C6KYHsc.pV2nTSskGKYIhHISskHvZdkluGsPhWK', NULL, '2018-10-25 04:34:41', '2018-03-08 05:56:21', '2018-10-25 04:34:41'),
-	(4, 1, '01784255111', 'Marchant', 0, '$2y$10$M2nCkps8ougSXwubhZYMIuPZ8Y13JztyaBfIwD80/0SLLtb7Qu10e', NULL, NULL, '2018-03-08 06:32:39', '2018-03-08 06:32:39'),
-	(5, 1, '01765768609', 'Admin', 0, '$2y$10$krIXbjHasYkPtwVINVhMAOmFRDv3F4t9wy2qy4pXAUuZOZssNH1fG', NULL, '2018-05-15 05:50:17', '2018-03-09 07:13:22', '2018-05-15 05:50:17'),
-	(6, 1, '01784255199', 'Buyer', 0, '$2y$10$Md4XMRqfJ3DfbPOBi3hSf.P8t0MHbVLjEIg7CGFAwb5v48b2ci0u6', NULL, '2018-05-15 05:50:32', '2018-03-10 11:36:28', '2018-05-15 05:50:32'),
-	(7, 1, '0178425166', 'Marchant', 0, '$2y$10$HczcMjTPi2KiicCxIeRFyu1TiVsxerpFAlS3s5CKYeh/UNJH5g0RC', NULL, NULL, '2018-04-20 15:18:35', '2018-04-20 15:18:35'),
-	(8, 1, '01784255188', 'Manager', 0, '$2y$10$WN15GCnF6IsJo/C6KYHsc.pV2nTSskGKYIhHISskHvZdkluGsPhWK', NULL, '2018-07-12 08:55:02', '2018-05-15 06:11:28', '2018-07-12 08:55:02');
+INSERT INTO `users` (`id`, `branch_id`, `mobile`, `name`, `address`, `points`, `password`, `permissions`, `last_login`, `created_at`, `updated_at`) VALUES
+	(3, 1, '01784255196', 'Admin', NULL, 100, '$2y$10$WN15GCnF6IsJo/C6KYHsc.pV2nTSskGKYIhHISskHvZdkluGsPhWK', NULL, '2018-11-08 06:41:05', '2018-03-08 05:56:21', '2018-11-08 06:41:05'),
+	(4, 1, '01784255111', 'Marchant', NULL, 0, '$2y$10$M2nCkps8ougSXwubhZYMIuPZ8Y13JztyaBfIwD80/0SLLtb7Qu10e', NULL, NULL, '2018-03-08 06:32:39', '2018-03-08 06:32:39'),
+	(5, 1, '01765768609', 'Admin', NULL, 0, '$2y$10$krIXbjHasYkPtwVINVhMAOmFRDv3F4t9wy2qy4pXAUuZOZssNH1fG', NULL, '2018-05-15 05:50:17', '2018-03-09 07:13:22', '2018-05-15 05:50:17'),
+	(6, 1, '01784255199', 'Buyer', NULL, 0, '$2y$10$Md4XMRqfJ3DfbPOBi3hSf.P8t0MHbVLjEIg7CGFAwb5v48b2ci0u6', NULL, '2018-05-15 05:50:32', '2018-03-10 11:36:28', '2018-05-15 05:50:32'),
+	(7, 1, '0178425166', 'Marchant', NULL, 0, '$2y$10$HczcMjTPi2KiicCxIeRFyu1TiVsxerpFAlS3s5CKYeh/UNJH5g0RC', NULL, NULL, '2018-04-20 15:18:35', '2018-04-20 15:18:35'),
+	(8, 1, '01784255188', 'Manager', NULL, 0, '$2y$10$WN15GCnF6IsJo/C6KYHsc.pV2nTSskGKYIhHISskHvZdkluGsPhWK', NULL, '2018-07-12 08:55:02', '2018-05-15 06:11:28', '2018-07-12 08:55:02'),
+	(9, NULL, '01729893142', 'Neher Ranjan Halder', NULL, 0, '$2y$10$PhnvHo65hadfdCFWQUx4LOroHNxxdo/sED9r8TMgoS2JrWK7zWXgy', NULL, NULL, '2018-11-04 07:14:25', '2018-11-04 07:14:25'),
+	(10, NULL, '01784124521', 'Somed Ali', NULL, 0, '$2y$10$A0FnXBVm.5H3nInqBI/9yethwdN4ROwP7pxi9QHlcclLVojXmt79e', NULL, NULL, '2018-11-04 07:19:02', '2018-11-04 07:19:02'),
+	(11, NULL, '01784250000', 'Neher Ranjan Halder', NULL, 0, '$2y$10$1BezeGoZv1cAcmXrMC5E8.V3dbxSlD9rxx/nrblrgBLVz2DXjMn3G', NULL, NULL, '2018-11-04 07:19:58', '2018-11-04 07:19:58'),
+	(12, NULL, '01784255222', 'Neher Ranjan Halder', NULL, 0, '$2y$10$pnBUJc9GAR8avbAN5/VYs.YCHqE7tR0fmB2GivqyvjT4mSrnE2.tK', NULL, '2018-11-04 07:21:55', '2018-11-04 07:21:55', '2018-11-04 07:21:55'),
+	(13, NULL, '01784251245', 'Neher Ranjan Halder', 'Dilu Road, Moghbazar', 0, '$2y$10$3WYPavWN4cbSLOp4f3IT7ujmIDcqyzMDa.gYaa2aLCgfLKebFL7pu', NULL, '2018-11-08 05:13:05', '2018-11-04 07:44:29', '2018-11-08 05:13:05'),
+	(14, NULL, '01765788609', 'Shreshtha', 'Rajshahi, Bangladesh', 0, '$2y$10$OEGmAl/HHlzoF05VCwkfS.cxlphj7e1YYibj5P5swLwKfyHFgnIJO', NULL, '2018-11-04 07:56:18', '2018-11-04 07:56:17', '2018-11-04 07:56:18');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

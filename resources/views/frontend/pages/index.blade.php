@@ -31,7 +31,7 @@
     													<a href="{{route('food-detatils', $food)}}">{{$food->name}}</a>
     												</h4>
                                                 <div class="grid-price mt-2">
-                                                    <span class="money "> 775.00 </span>
+                                                    <span class="money "> ৳ {{$food->price}} </span>
                                                 </div>
                                             </div>
                                             <ul class="stars">

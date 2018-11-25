@@ -50,7 +50,7 @@
                     <input type="hidden" name="cmd" value="_cart">
                     <input type="hidden" name="display" value="1">
                     <button class="top_googles_cart" type="button">
-                        <span style="color: red">{{ Cart::count() }}</span> Items
+                        <span id="total_items" style="color: red">{{ Cart::count() }}</span> Items
                         <i class="fas fa-cart-arrow-down"></i>                        
                     </button>                    
                 </form>                

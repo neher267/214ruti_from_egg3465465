@@ -133,7 +133,6 @@
                 <div class="clearfix"> </div>
             </div>
             @endif
-
         </div>
 
     </div>
