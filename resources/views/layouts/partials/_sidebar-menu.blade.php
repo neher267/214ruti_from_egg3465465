@@ -32,6 +32,15 @@
 			   	<li id="menu-academico-avaliacoes" ><a href="{{url('dashboard/inquiries')}}">Inquiries</a></li> 	
 			</ul>
 		 </li>
+
+		 <li id="menu-academico" ><a href="#"><i class="fa fa-table"></i> <span>Orders</span> <span class="fa fa-angle-right" style="float: right"></span></a>
+			<ul id="menu-academico-sub" >
+			   	<li id="menu-academico-avaliacoes" ><a href="{{route('orders.index', 0)}}">Pending</a></li> 	
+			   	<li id="menu-academico-avaliacoes" ><a href="{{route('orders.index', 1)}}">Confirmed</a></li>
+			   	<li id="menu-academico-avaliacoes" ><a href="{{route('orders.index', 2)}}">Canceled</a></li> 	
+			</ul>
+		 </li>
+
 		@endrole
 
 		@role('manager')	

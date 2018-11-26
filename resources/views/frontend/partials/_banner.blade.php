@@ -22,9 +22,11 @@
             @foreach($images as $key=>$image)
             <div class="carousel-item {{$key==0 ? 'active':'item'.$key}}">
                 <div class="carousel-caption text-center">
-                    <h3>Slide one
-                                <span>Cool summer sale 50% off</span>
+                    @if($image->image_details)
+                    <h3>{{$image->image_details->title}}
+                                <span>{{$image->image_details->body}}</span>
                             </h3>
+                    @endif
                     <a href="{{url('menu')}}" class="btn btn-sm animated-button gibson-three mt-4">Shop Now</a>
                 </div>
             </div>           

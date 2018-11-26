@@ -10,4 +10,9 @@ class Image extends Model
 	{
 		return $this->morphTo();
 	}
+
+	public function image_details()
+	{
+		return $this->hasOne(ImageDetail::class);
+	}
 }

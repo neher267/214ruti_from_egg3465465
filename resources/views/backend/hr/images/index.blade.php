@@ -48,13 +48,19 @@
 								
 
 								<td>	
-									<a href="" class="btn btn-info"><i class="fa fa-edit"></i> Details</a>								
+									@if($image->image_details)
+										<a href="{{route('image.details.show', $image)}}" class="btn btn-xs btn-info"><i class="fa fa-eye"></i> Details</a>	
+										<a href="{{route('image.details.edit', $image)}}" class="btn btn-xs btn-info"><i class="fa fa-edit"></i> Details</a>								
+									@else
+										<a href="{{route('image.details.create', $image)}}" class="btn btn-xs btn-info"><i class="fa fa-plus"></i> Details</a>
+									@endif	
+
 									@if($image->status)
 										<form action="{{route('images.update',[$image])}}" method="POST" style="display: inline;">
 											{{ csrf_field() }}
 											{{ method_field('PUT') }}
 											<input type="hidden" name="status" value="0">
-											<button type="submit" class="btn btn-danger" onclick="return alertUser('disable it?')">
+											<button type="submit" class="btn btn-xs btn-danger" onclick="return alertUser('disable it?')">
 												<i class="fas fa-thumbs-down"></i>
 											</button>
 										</form>
@@ -63,7 +69,7 @@
 											{{ csrf_field() }}
 											{{ method_field('PUT') }}
 											<input type="hidden" name="status" value="1">
-											<button type="submit" class="btn btn-success" onclick="return alertUser('active it?')">
+											<button type="submit" class="btn btn-xs btn-success" onclick="return alertUser('active it?')">
 												<i class="fas fa-thumbs-up"></i>
 											</button>
 										</form>
@@ -74,7 +80,7 @@
 										{{ method_field('DELETE') }}
 
 										<input type="hidden" name="avatar" value="{{$image->src}}">
-										<button type="submit" class="btn btn-danger" onclick="return alertUser('delete it?')">Delete</button>
+										<button type="submit" class="btn btn-xs btn-danger" onclick="return alertUser('delete it?')">Delete</button>
 									</form>								
 								</td>
 						    </tr>

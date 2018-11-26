@@ -20,7 +20,7 @@ Route::post('logout', 'Auth\SentinelLoginController@logout')->middleware('sentin
 
 Route::group(['namespace'=>'Auth', 'middleware'=>['guest']], function(){
 	Route::post('login','SentinelLoginController@post_login');
-	Route::get('login','SentinelLoginController@login');
+	//Route::get('login','SentinelLoginController@login');
 	Route::get('signup','CustomerRegisterController@create');
 	Route::post('signup','CustomerRegisterController@store');
 });
@@ -49,8 +49,8 @@ Route::post('cart', 'AjaxRequestController@cart');
 
 Route::post('cart-update', 'CartController@cart_update');
 
-Route::resource('checkout','CheckoutController');
-Route::resource('orders','OrderController');
+Route::get('checkout','CheckoutController@index');
+Route::post('orders','OrderController@store');//customer middleware and needed
 //end cart
 
 //inquiries
@@ -119,6 +119,14 @@ Route::group(['prefix'=>'dashboard', 'middleware'=>['sentinel.auth']], function(
 		Route::get('type-images/{type}','ImageController@type_index')->name('type.images');
 		Route::resource('images','ImageController');
 
+		//image details
+		Route::get('images/{image}/details/create', 'ImageDetailsController@create')->name('image.details.create');
+		Route::POST('images/{image}/details', 'ImageDetailsController@store')->name('image.details.store');
+		Route::get('images/{image}/details/show', 'ImageDetailsController@show')->name('image.details.show');
+		Route::get('images/{image}/details/edit', 'ImageDetailsController@edit')->name('image.details.edit');
+		Route::PUT('images/{image}/details/update', 'ImageDetailsController@update')->name('image.details.update');
+		//end image details
+
 		//expense
 		Route::resource('expenses','ExpenseController');
 		Route::get('my-expenses', 'ExpenseController@individualIndex');
@@ -148,6 +156,13 @@ Route::group(['prefix'=>'dashboard', 'middleware'=>['sentinel.auth']], function(
 		Route::PUT('products/{product_id}/packages/{package}/images/{image_id}', 'ProductPackageImageController@update')->name('product.package.images.update');
 		Route::DELETE('products/{product_id}/packages/{package}/images/{image_id}', 'ProductPackageImageController@destroy')->name('product.package.images.destroy');
 		//end product package image	
+
+
+		//orders
+		Route::get('orders-filter/{status}', 'OrderController@index')->name('orders.index');
+		Route::get('orders/{order}', 'OrderController@show')->name('orders.show');
+		Route::POST('orders/{order}/status-change', 'OrderController@change_status')->name('orders.status');
+		//end orders
 	});
 });
 

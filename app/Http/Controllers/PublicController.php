@@ -17,7 +17,7 @@ class PublicController extends Controller
         $count = $results->count();
         $foods = $results->chunk(4);
 
-        $images = Image::where('type', 'main-slider')->where('status', 1)->get();
+        $images = Image::with('image_details')->where('type', 'main-slider')->where('status', 1)->get();
         // dd($images);        
 
         return view('frontend.pages.index', compact('foods', 'count', 'images'));

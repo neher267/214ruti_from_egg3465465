@@ -81,7 +81,7 @@
             <div class="checkout-left row">
                 <div class="col-md-8 address_form" style="padding-left: 0px">
                     @if($user = Sentinel::check())
-                        <form class="creditly-card-form agileinfo_form" action="{{route('orders.store')}}" method="post">
+                        <form class="creditly-card-form agileinfo_form" action="{{url('orders')}}" method="post">
                         {{csrf_field()}}
 
                         <section class="creditly-wrapper wrapper">

@@ -160,7 +160,7 @@
 
 	        <div class="sbmincart-footer">
 	            <div class="sbmincart-subtotal"> Subtotal: ৳<span id="cart_subtotal">{{Cart::subtotal()}}</span> </div>
-	            <a href="{{route('checkout.index')}}" class="sbmincart-submit">Check Out</a>
+	            <a href="{{url('checkout')}}" class="sbmincart-submit">Check Out</a>
 	        </div>
 	        <input type="hidden" name="cmd" value="_cart">
 	        <input type="hidden" name="upload" value="1">
