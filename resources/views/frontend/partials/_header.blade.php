@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-md-3 top-info text-left mt-lg-4">
-        <h6>Need Help</h6>
+        <!-- <h6>Need Help</h6> -->
         <ul>
             <li>
                 <i class="fas fa-phone"></i> Call</li>

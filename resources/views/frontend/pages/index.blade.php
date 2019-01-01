@@ -1,12 +1,42 @@
 @extends('frontend.master') @section('content')
+<style type="text/css">
+    .w_nav {
+    float: right;
+    color: #555555;
+    font-size: 0.8125em;
+    padding: 0;
+    list-style: none;
+}
+.w_nav li {
+    display: inline-block;
+}
 
-<section class="banner-bottom-wthreelayouts py-lg-5 py-3">
+.w_nav li a{
+    color: green;
+}
+
+</style>
+<section class="banner-bottom-wthreelayouts py-3">
     <div class="container-fluid">
         <div class="inner-sec-shop px-lg-4 px-3">
-            <h3 class="tittle-w3layouts my-lg-4 my-4 text-center">CHOOSE YOUR FOODS</h3>
-            <hr>
+            <!-- <h3 class="tittle-w3layouts my-lg-4 my-4 text-center">CHOOSE YOUR FOODS</h3> -->
+            <!-- <hr> -->
 
             <!-- row -->
+
+            <div style="margin-bottom: 5px">
+                <ul class="w_nav">
+                    <li>Sort : </li>
+                    <li><a class="active" href="?filter=popular">Popular</a></li>
+                    <li><a href="?filter=new">New </a></li> |
+                    <li>Price : </li>
+                    <li><a href="?filter=low">Low </a></li>
+                    <li><a href="?filter=high">High</a></li>
+                    <div class="clear"></div>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+
             @foreach($foods as $foodsChunk)
                 <div class="row mt-lg-3 mt-0">
                     @foreach($foodsChunk as $food)                

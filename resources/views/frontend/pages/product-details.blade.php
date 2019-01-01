@@ -12,7 +12,9 @@
                             <ul class="slides">
                                 @foreach($product->images()->get() as $image)
                                 <li data-thumb="{{asset($image->src)}}">
-                                    <div class="thumb-image"> <img src="{{asset($image->src)}}" data-imagezoom="true" class="img-fluid" alt=" "> </div>
+                                    <div class="thumb-image"> 
+                                        <img src="{{asset($image->src)}}" data-imagezoom="true" class="img-fluid" alt="{{$product->name}}">
+                                    </div>
                                 </li>
                                 @endforeach
                             </ul>
@@ -22,9 +24,11 @@
                 </div>
                 <div class="col-lg-8 single-right-left simpleCart_shelfItem">
                     <h3>{{$product->name}}</h3>
-                    <p><span class="item_price">৳ {{number_format($product->price,2)}}</span>
+                    <p>
+                        <span class="item_price">৳ {{number_format($product->price,2)}}</span>
                         <!-- <del>$1,199</del> -->
                     </p>
+                    <!-- <h5>Quality :</h5>
                     <div class="rating1">
                         <ul class="stars">
                             <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
@@ -33,24 +37,26 @@
                             <li><a href="#"><i class="fa fa-star-half-o" aria-hidden="true"></i></a></li>
                             <li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
                         </ul>
-                    </div>
+                    </div> -->
                     
                     <div class="color-quality">
                         <div class="color-quality-right">
-                            <h5>Quality :</h5>
+                            
+                            <h5>Description :</h5>
+
+                            <div style="text-align: justify;">
+                                <?php echo html_entity_decode($product->description) ?>
+                            </div>
+
+
                             <form method="post" action="{{route('add-to-cart', $product)}}" style="display: inline;">
                                 {{csrf_field()}}
 
+                                <input class="form-control" 
+                                type="number" name="qty" 
+                                style="width: 80px; display: inline; padding: 2px; border-radius: 4px; text-align: center;" value="1">
 
-                                <input class="form-control" type="number" name="qty" style=" width: 50px; display: inline; padding: 0px 2px; border-radius: 4px; text-align: center;" value="1"> 
-
-                                <div class="occasion-cart">
-                                    <div class="googles single-item singlepage">
-                                        <button type="submit" class="googles-cart pgoogles-cart">
-                                                Add to Cart
-                                        </button>
-                                    </div>
-                                </div>
+                                <button type="submit" class="btn btn-sm" style="margin-bottom: 2px;">Add To <i class="fas fa-cart-plus"></i></button>
                             </form>
                         </div>
                     </div>                    
@@ -83,32 +89,41 @@
                             </a>
                         </li>
 
-                    </ul> -->
-
+                    </ul>
+ -->
                 </div>
                 <div class="clearfix"> </div>
                 <!--/tabs-->
                 <div class="responsive_tabs">
                     <div id="horizontalTab">
                         <ul class="resp-tabs-list">
-                            <li>Description</li>
-                            <li>Reviews</li>
-                            <li>Information</li>
+                            <!-- <li>Description</li> -->
+                            <li>Informations </li>
+                            <!-- <li>Reviews</li>                             -->
                         </ul>
                         <div class="resp-tabs-container">
                             <!--/tab_one-->
-                            <div class="tab1">
+                            <!-- <div class="tab1">
 
                                 <div class="single_page" style="text-align: justify;">
                                     <h6>{{$product->name}}</h6>
                                     <div>
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elPellentesque vehicula augue eget nisl ullamcorper, molestie blandit ipsum auctor.
+                                        <?php //echo html_entity_decode($product->description) ?>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                             <!--//tab_one-->
                             <div class="tab2">
 
+                                <div class="single_page col-md-12" style="text-align: justify; width: 100%">
+                                    <h6>{{$product->name}}</h6>
+                                    <div>
+                                        <?php echo html_entity_decode($product->informations) ?>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tab3">
                                 <div class="single_page">
                                     <div class="bootstrap-tab-text-grids">
                                         <div class="bootstrap-tab-text-grid">
@@ -136,16 +151,7 @@
                                     </div>
 
                                 </div>
-                            </div>
-                            <div class="tab3">
-
-                                <div class="single_page" style="text-align: justify;">
-                                    <h6>{{$product->name}}</h6>
-                                    <div>
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elPellentesque vehicula augue eget nisl ullamcorper, molestie blandit ipsum auctor.
-                                    </div>
-                                </div>
-                            </div>
+                            </div>                            
                         </div>
                     </div>
                 </div>

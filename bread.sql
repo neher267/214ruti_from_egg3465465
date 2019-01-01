@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS `activations` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table bread.activations: ~13 rows (approximately)
 /*!40000 ALTER TABLE `activations` DISABLE KEYS */;
@@ -38,7 +38,8 @@ INSERT INTO `activations` (`id`, `user_id`, `code`, `completed`, `completed_at`,
 	(10, 11, 'rKZCJgBp04Osost780mBjaHm4Ud4BJNp', 1, '2018-11-04 07:19:58', '2018-11-04 07:19:58', '2018-11-04 07:19:58'),
 	(11, 12, 'dqJJnd8tAtkQQYpEieTOIQzLicpXbB5n', 1, '2018-11-04 07:21:55', '2018-11-04 07:21:55', '2018-11-04 07:21:55'),
 	(12, 13, 'oLMAs9C6vSNWr7VRdLS1cEtSr0J3guf2', 1, '2018-11-04 07:44:29', '2018-11-04 07:44:29', '2018-11-04 07:44:29'),
-	(13, 14, 'ZxrYYFl6pwrgBriPC43CILygAlbuKGte', 1, '2018-11-04 07:56:18', '2018-11-04 07:56:18', '2018-11-04 07:56:18');
+	(13, 14, 'ZxrYYFl6pwrgBriPC43CILygAlbuKGte', 1, '2018-11-04 07:56:18', '2018-11-04 07:56:18', '2018-11-04 07:56:18'),
+	(14, 15, 'HR9stsk6VNLwmanBqYbWaq5KskjOOJB0', 1, '2018-12-05 15:24:00', '2018-12-05 15:24:00', '2018-12-05 15:24:00');
 /*!40000 ALTER TABLE `activations` ENABLE KEYS */;
 
 -- Dumping structure for table bread.addresses
@@ -204,7 +205,7 @@ INSERT INTO `gifts` (`id`, `name`, `slug`, `points`, `thumbnail`, `created_at`, 
 CREATE TABLE IF NOT EXISTS `images` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `imageable_id` int(10) unsigned DEFAULT NULL,
-  `imageable_type` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `imageable_type` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `type` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `status` tinyint(1) NOT NULL DEFAULT 1,
   `src` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -212,17 +213,39 @@ CREATE TABLE IF NOT EXISTS `images` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `images_src_unique` (`src`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table bread.images: ~5 rows (approximately)
+-- Dumping data for table bread.images: ~9 rows (approximately)
 /*!40000 ALTER TABLE `images` DISABLE KEYS */;
 INSERT INTO `images` (`id`, `imageable_id`, `imageable_type`, `type`, `status`, `src`, `created_at`, `updated_at`) VALUES
 	(1, 1, 'category', 'Thumbnail', 1, 'images/Category/1540379670.jpg', '2018-10-24 11:14:30', '2018-10-24 11:14:30'),
 	(2, 1, 'product', 'Thumbnail', 1, 'images/products/1540379773.jpg', '2018-10-24 11:16:13', '2018-10-24 11:16:13'),
 	(3, 1, 'product', 'Details', 1, 'images/products/1540380245.jpg', '2018-10-24 11:24:05', '2018-10-24 11:24:05'),
 	(4, 1, 'product', 'Details', 1, 'images/products/1540381043.jpg', '2018-10-24 11:37:23', '2018-10-24 11:37:23'),
-	(6, NULL, 'main-slider', 'main-slider', 1, 'images/site/1540446595.jpg', '2018-10-25 05:49:55', '2018-10-25 05:49:55');
+	(6, NULL, '', 'main-slider', 1, 'images/site/1540446595.jpg', '2018-10-25 05:49:55', '2018-11-26 17:38:39'),
+	(7, NULL, NULL, 'main-slider', 1, 'images/site/1542613847.jpg', '2018-11-19 13:50:47', '2018-11-26 17:38:42'),
+	(8, NULL, NULL, 'main-slider', 1, 'images/site/1543146878.jpg', '2018-11-25 17:54:38', '2018-11-26 17:40:31'),
+	(9, NULL, NULL, 'main-slider', 0, 'images/site/1543146900.jpg', '2018-11-25 17:55:00', '2018-11-26 17:38:50'),
+	(10, NULL, NULL, 'main-slider', 0, 'images/site/1543147046.jpg', '2018-11-25 17:57:26', '2018-11-26 17:38:52');
 /*!40000 ALTER TABLE `images` ENABLE KEYS */;
+
+-- Dumping structure for table bread.image_details
+CREATE TABLE IF NOT EXISTS `image_details` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `image_id` int(10) unsigned NOT NULL,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `body` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Dumping data for table bread.image_details: ~2 rows (approximately)
+/*!40000 ALTER TABLE `image_details` DISABLE KEYS */;
+INSERT INTO `image_details` (`id`, `image_id`, `title`, `body`, `created_at`, `updated_at`) VALUES
+	(1, 6, 'Hello', 'Test 2', '2018-11-26 17:04:34', '2018-11-26 17:33:02'),
+	(2, 7, 'Another Test', 'Description 2', '2018-11-26 17:34:09', '2018-11-26 17:34:15');
+/*!40000 ALTER TABLE `image_details` ENABLE KEYS */;
 
 -- Dumping structure for table bread.inquiries
 CREATE TABLE IF NOT EXISTS `inquiries` (
@@ -235,7 +258,7 @@ CREATE TABLE IF NOT EXISTS `inquiries` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table bread.inquiries: ~4 rows (approximately)
 /*!40000 ALTER TABLE `inquiries` DISABLE KEYS */;
@@ -243,7 +266,8 @@ INSERT INTO `inquiries` (`id`, `name`, `email`, `subject`, `message`, `read_at`,
 	(1, 'Neher', 'neher@eclsystem.com', 'Test', 'Test message', '2018-11-08 13:43:15', '2018-11-08 06:39:17', '2018-11-08 13:43:15'),
 	(2, 'Neher', 'neher@eclsystem.com', 'Test2', 'Test message', '2018-11-08 13:43:20', '2018-11-08 06:39:17', '2018-11-08 13:43:20'),
 	(3, 'Shreshtha', 'shreshtha@gmail.com', 'Another Test', 'Hello ...', '2018-11-08 13:43:08', '2018-11-08 13:26:48', '2018-11-08 13:43:08'),
-	(4, 'Shreshtha', 'shreshtha@gmail.com', 'Another Test2', 'Hello Bread', NULL, '2018-11-08 14:17:02', '2018-11-08 14:17:02');
+	(4, 'Shreshtha', 'shreshtha@gmail.com', 'Another Test2', 'Hello Bread', '2018-11-19 12:33:57', '2018-11-08 14:17:02', '2018-11-19 12:33:57'),
+	(5, 'Jhon', 'jhon@gmail.com', 'I want to be your patner', 'Hello Neher. I want to be your partner in your business.', NULL, '2018-11-19 10:24:44', '2018-11-19 10:24:44');
 /*!40000 ALTER TABLE `inquiries` ENABLE KEYS */;
 
 -- Dumping structure for table bread.migrations
@@ -252,7 +276,7 @@ CREATE TABLE IF NOT EXISTS `migrations` (
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table bread.migrations: ~21 rows (approximately)
 /*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
@@ -277,7 +301,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 	(18, '2018_02_20_060425_create_districts_table', 1),
 	(23, '2018_10_27_072348_create_orders_table', 2),
 	(24, '2018_10_27_072423_create_order_details_table', 2),
-	(25, '2018_11_08_061952_create_inquiries_table', 2);
+	(25, '2018_11_08_061952_create_inquiries_table', 2),
+	(26, '2018_11_20_123221_create_image_details_table', 3);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 
 -- Dumping structure for table bread.mix_products
@@ -308,10 +333,16 @@ CREATE TABLE IF NOT EXISTS `orders` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table bread.orders: ~0 rows (approximately)
+-- Dumping data for table bread.orders: ~2 rows (approximately)
 /*!40000 ALTER TABLE `orders` DISABLE KEYS */;
+INSERT INTO `orders` (`id`, `user_id`, `s_address`, `notes`, `status`, `payment_status`, `created_at`, `updated_at`) VALUES
+	(1, 13, 'Dilu Road, Moghbazar', NULL, 0, 0, '2018-11-11 15:17:01', '2018-11-11 15:17:01'),
+	(2, 13, 'Dilu Road, Moghbazar', NULL, 0, 0, '2018-11-11 15:18:13', '2018-11-11 15:18:13'),
+	(3, 13, 'Dilu Road, Moghbazar', NULL, 0, 0, '2018-11-19 12:23:14', '2018-11-19 12:23:14'),
+	(4, 3, 'Arjat para, Mohakhali', NULL, 1, 0, '2018-11-26 10:45:39', '2018-11-26 14:58:23'),
+	(5, 15, 'White House (6th floor),Rajshahi', NULL, 0, 0, '2018-12-05 15:24:19', '2018-12-05 15:24:19');
 /*!40000 ALTER TABLE `orders` ENABLE KEYS */;
 
 -- Dumping structure for table bread.order_details
@@ -322,10 +353,19 @@ CREATE TABLE IF NOT EXISTS `order_details` (
   `price` decimal(6,2) NOT NULL,
   `quantity` decimal(5,0) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table bread.order_details: ~0 rows (approximately)
+-- Dumping data for table bread.order_details: ~8 rows (approximately)
 /*!40000 ALTER TABLE `order_details` DISABLE KEYS */;
+INSERT INTO `order_details` (`id`, `order_id`, `product_id`, `price`, `quantity`) VALUES
+	(1, 1, 1, 1200.00, 9),
+	(2, 2, 1, 1200.00, 1),
+	(3, 3, 1, 8.00, 5),
+	(4, 4, 1, 8.00, 3),
+	(5, 5, 1, 8.00, 13),
+	(6, 5, 3, 8.00, 6),
+	(7, 5, 4, 8.00, 1),
+	(8, 5, 5, 8.00, 21);
 /*!40000 ALTER TABLE `order_details` ENABLE KEYS */;
 
 -- Dumping structure for table bread.packages
@@ -370,12 +410,12 @@ CREATE TABLE IF NOT EXISTS `persistences` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `persistences_code_unique` (`code`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table bread.persistences: ~1 rows (approximately)
+-- Dumping data for table bread.persistences: ~0 rows (approximately)
 /*!40000 ALTER TABLE `persistences` DISABLE KEYS */;
 INSERT INTO `persistences` (`id`, `user_id`, `code`, `created_at`, `updated_at`) VALUES
-	(9, 3, 'US1OsNVULSeo1gutSc2jXsfbkIUVJNaV', '2018-11-08 06:41:05', '2018-11-08 06:41:05');
+	(1, 3, 'scuadwiEOVBsEjWtTjO27qPFpi6fflC7', '2018-12-20 11:57:56', '2018-12-20 11:57:56');
 /*!40000 ALTER TABLE `persistences` ENABLE KEYS */;
 
 -- Dumping structure for table bread.prices
@@ -399,6 +439,8 @@ CREATE TABLE IF NOT EXISTS `products` (
   `category_id` int(10) unsigned NOT NULL,
   `branch_id` int(10) unsigned DEFAULT NULL,
   `name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `informations` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `slug` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `unit` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
   `hit_count` decimal(10,0) unsigned DEFAULT NULL,
@@ -410,12 +452,16 @@ CREATE TABLE IF NOT EXISTS `products` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `products_name_unique` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table bread.products: ~0 rows (approximately)
+-- Dumping data for table bread.products: ~5 rows (approximately)
 /*!40000 ALTER TABLE `products` DISABLE KEYS */;
-INSERT INTO `products` (`id`, `category_id`, `branch_id`, `name`, `slug`, `unit`, `hit_count`, `price`, `old_price`, `for_sale`, `thumbnail`, `created_at`, `updated_at`) VALUES
-	(1, 1, NULL, 'Boiled Floor Bread', 'boiled-floor-bread', 'PCS', NULL, 1200.00, NULL, 1, 'images/products/1540379773.jpg', '2018-10-24 11:16:13', '2018-10-24 11:16:13');
+INSERT INTO `products` (`id`, `category_id`, `branch_id`, `name`, `description`, `informations`, `slug`, `unit`, `hit_count`, `price`, `old_price`, `for_sale`, `thumbnail`, `created_at`, `updated_at`) VALUES
+	(1, 1, NULL, 'Boiled Floor Bread', '<ol>\r\n	<li>Pure floor and warer are used for making bread.</li>\r\n	<li>One piece of bread is 75g.</li>\r\n	<li>Bread is very soft.&nbsp;</li>\r\n</ol>', '<ol>\r\n	<li>One piece of bread contains 150 kcl</li>\r\n	<li>Fat is 0 g</li>\r\n	<li>Protin is 3.6 g</li>\r\n</ol>', 'boiled-floor-bread1', 'PCS', 10, 8.00, NULL, 1, 'images/products/1540379773.jpg', '2018-10-24 11:16:13', '2018-11-27 11:42:50'),
+	(2, 1, NULL, 'Boiled Floor Bread 2', '<ol>\r\n	<li>Pure floor and warer are used for making bread.</li>\r\n	<li>One piece of bread is 75g.</li>\r\n	<li>Bread is very soft.&nbsp;</li>\r\n</ol>', '<ol>\r\n	<li>One piece of bread contains 150 kcl</li>\r\n	<li>Fat is 0 g</li>\r\n	<li>Protin is 3.6 g</li>\r\n</ol>', 'boiled-floor-bread2', 'PCS', 10, 10.00, NULL, 1, 'images/products/1540379773.jpg', '2018-10-24 11:16:13', '2018-11-27 11:42:50'),
+	(3, 1, NULL, 'Boiled Floor Bread 3', '<ol>\r\n	<li>Pure floor and warer are used for making bread.</li>\r\n	<li>One piece of bread is 75g.</li>\r\n	<li>Bread is very soft.&nbsp;</li>\r\n</ol>', '<ol>\r\n	<li>One piece of bread contains 150 kcl</li>\r\n	<li>Fat is 0 g</li>\r\n	<li>Protin is 3.6 g</li>\r\n</ol>', 'boiled-floor-bread3', 'PCS', 200, 12.00, NULL, 1, 'images/products/1540379773.jpg', '2018-10-24 11:16:13', '2018-11-27 11:42:50'),
+	(4, 1, NULL, 'Boiled Floor Bread 4', '<ol>\r\n	<li>Pure floor and warer are used for making bread.</li>\r\n	<li>One piece of bread is 75g.</li>\r\n	<li>Bread is very soft.&nbsp;</li>\r\n</ol>', '<ol>\r\n	<li>One piece of bread contains 150 kcl</li>\r\n	<li>Fat is 0 g</li>\r\n	<li>Protin is 3.6 g</li>\r\n</ol>', 'boiled-floor-bread4', 'PCS', 20, 14.00, NULL, 1, 'images/products/1540379773.jpg', '2018-10-24 11:16:13', '2018-11-27 11:42:50'),
+	(5, 1, NULL, 'Boiled Floor Bread 5', '<ol>\r\n	<li>Pure floor and warer are used for making bread.</li>\r\n	<li>One piece of bread is 75g.</li>\r\n	<li>Bread is very soft.&nbsp;</li>\r\n</ol>', '<ol>\r\n	<li>One piece of bread contains 150 kcl</li>\r\n	<li>Fat is 0 g</li>\r\n	<li>Protin is 3.6 g</li>\r\n</ol>', 'boiled-floor-bread5', 'PCS', 30, 16.00, NULL, 1, 'images/products/1540379773.jpg', '2018-11-29 11:42:50', '2018-11-27 11:42:50');
 /*!40000 ALTER TABLE `products` ENABLE KEYS */;
 
 -- Dumping structure for table bread.purchases
@@ -500,7 +546,8 @@ INSERT INTO `role_users` (`user_id`, `role_id`, `created_at`, `updated_at`) VALU
 	(11, 4, '2018-11-04 07:19:59', '2018-11-04 07:19:59'),
 	(12, 4, '2018-11-04 07:21:55', '2018-11-04 07:21:55'),
 	(13, 4, '2018-11-04 07:44:29', '2018-11-04 07:44:29'),
-	(14, 4, '2018-11-04 07:56:18', '2018-11-04 07:56:18');
+	(14, 4, '2018-11-04 07:56:18', '2018-11-04 07:56:18'),
+	(15, 4, '2018-12-05 15:24:00', '2018-12-05 15:24:00');
 /*!40000 ALTER TABLE `role_users` ENABLE KEYS */;
 
 -- Dumping structure for table bread.stocks
@@ -530,9 +577,9 @@ CREATE TABLE IF NOT EXISTS `throttle` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `throttle_user_id_index` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table bread.throttle: ~8 rows (approximately)
+-- Dumping data for table bread.throttle: ~26 rows (approximately)
 /*!40000 ALTER TABLE `throttle` DISABLE KEYS */;
 INSERT INTO `throttle` (`id`, `user_id`, `type`, `ip`, `created_at`, `updated_at`) VALUES
 	(1, NULL, 'global', NULL, '2018-10-24 10:38:44', '2018-10-24 10:38:44'),
@@ -542,7 +589,25 @@ INSERT INTO `throttle` (`id`, `user_id`, `type`, `ip`, `created_at`, `updated_at
 	(5, NULL, 'global', NULL, '2018-10-24 10:39:25', '2018-10-24 10:39:25'),
 	(6, NULL, 'ip', '127.0.0.1', '2018-10-24 10:39:25', '2018-10-24 10:39:25'),
 	(7, NULL, 'global', NULL, '2018-10-24 10:39:55', '2018-10-24 10:39:55'),
-	(8, NULL, 'ip', '127.0.0.1', '2018-10-24 10:39:55', '2018-10-24 10:39:55');
+	(8, NULL, 'ip', '127.0.0.1', '2018-10-24 10:39:55', '2018-10-24 10:39:55'),
+	(9, NULL, 'global', NULL, '2018-11-26 10:49:41', '2018-11-26 10:49:41'),
+	(10, NULL, 'ip', '127.0.0.1', '2018-11-26 10:49:41', '2018-11-26 10:49:41'),
+	(11, 3, 'user', NULL, '2018-11-26 10:49:41', '2018-11-26 10:49:41'),
+	(12, NULL, 'global', NULL, '2018-11-26 10:49:50', '2018-11-26 10:49:50'),
+	(13, NULL, 'ip', '127.0.0.1', '2018-11-26 10:49:50', '2018-11-26 10:49:50'),
+	(14, 3, 'user', NULL, '2018-11-26 10:49:50', '2018-11-26 10:49:50'),
+	(15, NULL, 'global', NULL, '2018-11-26 10:49:57', '2018-11-26 10:49:57'),
+	(16, NULL, 'ip', '127.0.0.1', '2018-11-26 10:49:57', '2018-11-26 10:49:57'),
+	(17, 3, 'user', NULL, '2018-11-26 10:49:57', '2018-11-26 10:49:57'),
+	(18, NULL, 'global', NULL, '2018-11-26 10:50:03', '2018-11-26 10:50:03'),
+	(19, NULL, 'ip', '127.0.0.1', '2018-11-26 10:50:03', '2018-11-26 10:50:03'),
+	(20, 3, 'user', NULL, '2018-11-26 10:50:03', '2018-11-26 10:50:03'),
+	(21, NULL, 'global', NULL, '2018-11-26 10:50:09', '2018-11-26 10:50:09'),
+	(22, NULL, 'ip', '127.0.0.1', '2018-11-26 10:50:09', '2018-11-26 10:50:09'),
+	(23, 3, 'user', NULL, '2018-11-26 10:50:09', '2018-11-26 10:50:09'),
+	(24, NULL, 'global', NULL, '2018-11-26 10:50:13', '2018-11-26 10:50:13'),
+	(25, NULL, 'ip', '127.0.0.1', '2018-11-26 10:50:13', '2018-11-26 10:50:13'),
+	(26, 3, 'user', NULL, '2018-11-26 10:50:13', '2018-11-26 10:50:13');
 /*!40000 ALTER TABLE `throttle` ENABLE KEYS */;
 
 -- Dumping structure for table bread.trets
@@ -575,12 +640,12 @@ CREATE TABLE IF NOT EXISTS `users` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_mobile_unique` (`mobile`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table bread.users: ~12 rows (approximately)
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` (`id`, `branch_id`, `mobile`, `name`, `address`, `points`, `password`, `permissions`, `last_login`, `created_at`, `updated_at`) VALUES
-	(3, 1, '01784255196', 'Admin', NULL, 100, '$2y$10$WN15GCnF6IsJo/C6KYHsc.pV2nTSskGKYIhHISskHvZdkluGsPhWK', NULL, '2018-11-08 06:41:05', '2018-03-08 05:56:21', '2018-11-08 06:41:05'),
+	(3, 1, '01784255196', 'Admin', NULL, 100, '$2y$10$WN15GCnF6IsJo/C6KYHsc.pV2nTSskGKYIhHISskHvZdkluGsPhWK', NULL, '2018-12-20 11:57:56', '2018-03-08 05:56:21', '2018-12-20 11:57:56'),
 	(4, 1, '01784255111', 'Marchant', NULL, 0, '$2y$10$M2nCkps8ougSXwubhZYMIuPZ8Y13JztyaBfIwD80/0SLLtb7Qu10e', NULL, NULL, '2018-03-08 06:32:39', '2018-03-08 06:32:39'),
 	(5, 1, '01765768609', 'Admin', NULL, 0, '$2y$10$krIXbjHasYkPtwVINVhMAOmFRDv3F4t9wy2qy4pXAUuZOZssNH1fG', NULL, '2018-05-15 05:50:17', '2018-03-09 07:13:22', '2018-05-15 05:50:17'),
 	(6, 1, '01784255199', 'Buyer', NULL, 0, '$2y$10$Md4XMRqfJ3DfbPOBi3hSf.P8t0MHbVLjEIg7CGFAwb5v48b2ci0u6', NULL, '2018-05-15 05:50:32', '2018-03-10 11:36:28', '2018-05-15 05:50:32'),
@@ -590,8 +655,9 @@ INSERT INTO `users` (`id`, `branch_id`, `mobile`, `name`, `address`, `points`, `
 	(10, NULL, '01784124521', 'Somed Ali', NULL, 0, '$2y$10$A0FnXBVm.5H3nInqBI/9yethwdN4ROwP7pxi9QHlcclLVojXmt79e', NULL, NULL, '2018-11-04 07:19:02', '2018-11-04 07:19:02'),
 	(11, NULL, '01784250000', 'Neher Ranjan Halder', NULL, 0, '$2y$10$1BezeGoZv1cAcmXrMC5E8.V3dbxSlD9rxx/nrblrgBLVz2DXjMn3G', NULL, NULL, '2018-11-04 07:19:58', '2018-11-04 07:19:58'),
 	(12, NULL, '01784255222', 'Neher Ranjan Halder', NULL, 0, '$2y$10$pnBUJc9GAR8avbAN5/VYs.YCHqE7tR0fmB2GivqyvjT4mSrnE2.tK', NULL, '2018-11-04 07:21:55', '2018-11-04 07:21:55', '2018-11-04 07:21:55'),
-	(13, NULL, '01784251245', 'Neher Ranjan Halder', 'Dilu Road, Moghbazar', 0, '$2y$10$3WYPavWN4cbSLOp4f3IT7ujmIDcqyzMDa.gYaa2aLCgfLKebFL7pu', NULL, '2018-11-08 05:13:05', '2018-11-04 07:44:29', '2018-11-08 05:13:05'),
-	(14, NULL, '01765788609', 'Shreshtha', 'Rajshahi, Bangladesh', 0, '$2y$10$OEGmAl/HHlzoF05VCwkfS.cxlphj7e1YYibj5P5swLwKfyHFgnIJO', NULL, '2018-11-04 07:56:18', '2018-11-04 07:56:17', '2018-11-04 07:56:18');
+	(13, NULL, '01784251245', 'Neher Ranjan Halder', 'Dilu Road, Moghbazar', 0, '$2y$10$3WYPavWN4cbSLOp4f3IT7ujmIDcqyzMDa.gYaa2aLCgfLKebFL7pu', NULL, '2018-11-19 12:22:36', '2018-11-04 07:44:29', '2018-11-19 12:22:36'),
+	(14, NULL, '01765788609', 'Shreshtha', 'Rajshahi, Bangladesh', 0, '$2y$10$OEGmAl/HHlzoF05VCwkfS.cxlphj7e1YYibj5P5swLwKfyHFgnIJO', NULL, '2018-11-04 07:56:18', '2018-11-04 07:56:17', '2018-11-04 07:56:18'),
+	(15, NULL, '01765768600', 'Shreshtha', 'White House (6th floor),Rajshahi', 0, '$2y$10$MC6Y9Vl19QhB02GKjUzOp.f5jm4p3p5gN1Qn5foreAc95ro6jewlS', NULL, '2018-12-05 15:24:00', '2018-12-05 15:24:00', '2018-12-05 15:24:00');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

@@ -41,6 +41,16 @@
 								<option value="{{$unit}}" {{$unit == $product->unit ? "selected":""}}>{{$unit}}</option>
 								@endforeach
 							</select>
+						</div>
+
+						<div class="form-group"> 
+							<label for="description">Product Discription</label>
+							<textarea name="description" id="description" cols="50" rows="4" class="form-control">{{$product->description}}</textarea>			
+						</div>
+
+						<div class="form-group"> 
+							<label for="informations">Product Informations</label>
+							<textarea name="informations" id="informations" cols="50" rows="4" class="form-control">{{$product->informations}}</textarea>			
 						</div>				
 
 						<button type="submit" class="btn btn-default">Update</button>
@@ -50,4 +60,12 @@
 		</div>
 	</div>
 </div>
+<script>
+	CKEDITOR.replace('description', {
+	    language: 'en',
+	});
+	CKEDITOR.replace('informations', {
+	    language: 'en',
+	});
+</script>
 @endsection

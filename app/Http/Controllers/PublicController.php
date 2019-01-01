@@ -11,15 +11,15 @@ use App\Image;
 
 class PublicController extends Controller
 {
+    use Filter;
+
     public function index()
     {
-        $results = Product::orderBy('name', 'asc')->get();
+        $results = $this->filter();
         $count = $results->count();
         $foods = $results->chunk(4);
 
         $images = Image::with('image_details')->where('type', 'main-slider')->where('status', 1)->get();
-        // dd($images);        
-
         return view('frontend.pages.index', compact('foods', 'count', 'images'));
     }
 
@@ -33,7 +33,7 @@ class PublicController extends Controller
     }
 
     public function menu(){
-        $results = Product::orderBy('name', 'asc')->get();
+        $results = $this->filter();
         $count = $results->count();
         $foods = $results->chunk(4);
 

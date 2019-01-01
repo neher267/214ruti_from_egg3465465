@@ -41,6 +41,16 @@
 						</div>
 
 						<div class="form-group"> 
+							<label for="description">Product Discription</label>
+							<textarea name="description" id="description" cols="50" rows="4" class="form-control"></textarea>			
+						</div>
+
+						<div class="form-group"> 
+							<label for="informations">Product Informations</label>
+							<textarea name="informations" id="informations" cols="50" rows="4" class="form-control"></textarea>			
+						</div>
+
+						<div class="form-group"> 
 							<label for="src">Thumbnail Image</label>
 							<input type="file" name="src" class="form-control" required>			
 						</div>				
@@ -52,4 +62,13 @@
 		</div>
 	</div>
 </div>
+
+<script>
+	CKEDITOR.replace('description', {
+	    language: 'en',
+	});
+	CKEDITOR.replace('informations', {
+	    language: 'en',
+	});
+</script>
 @endsection

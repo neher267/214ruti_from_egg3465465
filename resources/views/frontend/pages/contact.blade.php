@@ -1,9 +1,9 @@
 @extends('frontend.master')
 
 @section('content')
-<section class="banner-bottom-wthreelayouts py-lg-5 py-3">
+<section class="banner-bottom-wthreelayouts py-3 py-5">
     <div class="container">
-        <h3 class="tittle-w3layouts text-center my-lg-4 my-4">Contact</h3>
+        <!-- <h3 class="tittle-w3layouts text-center my-lg-4 my-4">Contact</h3> -->
         <div class="inner_sec">
             <p class="sub text-center mb-lg-5 mb-3">We love to discuss your idea</p>
             <div class="address row">

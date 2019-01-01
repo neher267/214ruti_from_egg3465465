@@ -498,7 +498,7 @@ p.sbmincart-empty-text {
 
 span.money {
 	font-size: 1em;
-	color: #ff4e00;
+	color: #529a62;
 	font-weight: 700;
 	letter-spacing: 1px;
 }
@@ -575,6 +575,7 @@ span.money {
 	font-size: 0.8em;
 	font-weight: 700;
     letter-spacing: 2px;
+    border-radius: 3px;
 }
 
 .men-thumb-item:hover .inner-men-cart-pro .link-product-add-cart {
@@ -905,8 +906,9 @@ input.checked {
 }
 
 .product_price h4 a {
-	color: #959596;
+	color: #686898;
     font-size: 0.8em;
+    font-weight: 450;
     font-family: 'Inconsolata', monospace;
 }
 
@@ -1008,6 +1010,7 @@ span.item_price {
 	float: left;
 	width: 80%;
 	text-align: left;
+	padding-top: 10px;
 }
 
 button.googles-cart {

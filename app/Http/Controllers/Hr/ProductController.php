@@ -45,15 +45,14 @@ class ProductController extends Controller
     {
         $imageName = time().'.'.$request->src->getClientOriginalExtension();
         // both side space remove and more than one space to one space
-        $name = trim(preg_replace('/\s\s+/', ' ', $request->name));
-
         $product = new Product;
-        $product->name = $name;
-        $product->slug = strtolower(str_replace(' ', '-', $name));
-
+        $product->name = trim(preg_replace('/\s\s+/', ' ', $request->name));
+        $product->slug = str_slug($request->name, '-');
         $product->category()->associate($request->category_id);
         $product->unit = $request->unit;
         $product->for_sale = true;
+        $product->description = $request->description;
+        $product->informations = $request->informations;
         $product->thumbnail = $this->path.'/'.$imageName; 
         $product->save();
 
@@ -103,9 +102,11 @@ class ProductController extends Controller
         $product->category()->associate($request->category_id);
         $product->unit = $request->unit;
         $product->for_sale = true;
+        $product->description = $request->description;
+        $product->informations = $request->informations;
         $product->save();
 
-        return redirect("products")->withSuccess("Edit Successful!");
+        return redirect("dashboard/products")->withSuccess("Edit Successful!");
     }
 
     /**

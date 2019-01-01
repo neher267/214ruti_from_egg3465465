@@ -7,20 +7,19 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav nav-mega mx-auto">
-            <li class="nav-item active">
+            <li class="nav-item {{Request::is('/')? 'active':''}}" style="text-align: center;">
                 <a class="nav-link ml-lg-0" href="{{url('/')}}">Home
-					<span class="sr-only">(current)</span>
 				</a>
             </li>
             
-            <li class="nav-item">
-                <a class="nav-link" href="{{url('menu')}}">Foods</a>
+            <li class="nav-item {{Request::is('menu')? 'active':''}}" style="text-align: center;">
+                <a class="nav-link" href="{{url('menu')}}">Foods
+                </a>
             </li>
 
-            <li class="nav-item">
+            <li class="nav-item {{Request::is('contact')? 'active':''}}" style="text-align: center;">
                 <a class="nav-link" href="{{url('contact')}}">Contact</a>
             </li>
         </ul>
-
     </div>
 </nav>

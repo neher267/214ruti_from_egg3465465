@@ -47,11 +47,11 @@
 		@if(Request::is('/'))
 		@include('frontend.partials._banner')
 		@else
-		<div class="banner_inner">
+		<!-- <div class="banner_inner">
 		    <div class="services-breadcrumb">
 		        <div class="inner_breadcrumb">
 
-		            <!-- <ul class="short">
+		            <ul class="short">
 		                <li>
 		                    <a href="{{url('/')}}">Home</a>
 		                    <i>|</i>
@@ -59,10 +59,11 @@
 		                <li>
 		                	Menu
 		                </li>
-		            </ul> -->
+		            </ul>
 		        </div>
 		    </div>
-		</div>
+		</div> -->
+		<hr>
 		@endif
 		<!--//banner-sec-->		
 	</div>
