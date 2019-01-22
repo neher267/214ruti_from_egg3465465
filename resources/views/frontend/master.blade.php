@@ -2,7 +2,7 @@
 <html lang="zxx">
 
 <head>
-	<title>{{config('app.name')}}</title>
+	<title>{{$page_title}}</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="utf-8">
 	<meta name="keywords" content="Resturent, Bangla Resturent" />
@@ -26,13 +26,14 @@
 	<link rel="stylesheet" href="{{asset('frontend/css/flexslider.css')}}" type="text/css" media="all">
 	<link rel="stylesheet" href="{{asset('frontend/css/contact.css')}}" type="text/css" media="all">
 	<link rel="stylesheet" href="{{asset('frontend/css/checkout.css')}}" type="text/css" media="all">
-
 	<link href="{{asset('frontend/css/style.css')}}" rel='stylesheet' type='text/css' />
+
+	<link rel="stylesheet" href="{{asset('css/kitchen.css')}}" type="text/css">
+
 	<link href="{{asset('frontend/css/fontawesome-all.css')}}" rel="stylesheet">
 	<link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet">
 	<link href="//fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800"
 	    rel="stylesheet">
-	<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 
 </head>
 
@@ -47,54 +48,20 @@
 		@if(Request::is('/'))
 		@include('frontend.partials._banner')
 		@else
-		<!-- <div class="banner_inner">
-		    <div class="services-breadcrumb">
-		        <div class="inner_breadcrumb">
-
-		            <ul class="short">
-		                <li>
-		                    <a href="{{url('/')}}">Home</a>
-		                    <i>|</i>
-		                </li>
-		                <li>
-		                	Menu
-		                </li>
-		            </ul>
-		        </div>
-		    </div>
-		</div> -->
 		<hr>
 		@endif
 		<!--//banner-sec-->		
 	</div>
 
-	<div style="margin: 0px 15px">
-		@include('common.errors')
-	</div>
-	
 	@yield('content')
 
-	<!--footer -->
-	<footer class="py-lg-5 py-3">
-		<div class="container-fluid px-lg-5 px-3">
-			<div class="copyright-w3layouts mt-4">
-				<p class="copy-right">{{config('app.name')}} | Design by
-					<a href="#" style="color: #333"> W3layouts </a>
-				</p>
-			</div>
-		</div>
-	</footer>
-	<!-- //footer -->
+	@include('frontend.partials._login-form')
+	@include('frontend.common.cart-container')
+	@include('frontend.partials._footer')	
 
 	<!--jQuery-->
 	<script src="{{asset('frontend/js/jquery-2.2.3.min.js')}}"></script>
 	
-
-	<!--search jQuery-->
-	<script src="{{asset('frontend/js/modernizr-2.6.2.min.js')}}"></script>
-	<script src="{{asset('frontend/js/classie-search.js')}}"></script>
-	<script src="{{asset('frontend/js/demo1-search.js')}}"></script>
-	<!--//search jQuery-->
 	<!-- cart-js -->
 
 	<script>
@@ -104,6 +71,7 @@
 				$(this).toggleClass('btn-open').toggleClass('btn-close');
 			});
 		});
+
 		$('.overlay-close1').on('click', function () {
 			$(".overlay-login").fadeToggle(200);
 			$(".button-log a").toggleClass('btn-open').toggleClass('btn-close');
@@ -114,59 +82,17 @@
 
 	<div style="position: fixed; bottom: 10px; right: 15px; margin-left: 15px">
 		@if(session()->has('success'))
-		    <div class="alert alert-success flash" style="margin-top: 20px; padding-left: 15px">
+		    <div class="alert alert-success flash" style="padding: 8px">
 		        {{ session()->get('success') }}
 		    </div>
 		@endif
 	</div>
-	
-	<div id="staplesbmincart">
-	    <form method="post" action="#" target="">
-	        <button type="button" class="sbmincart-closer">×</button>
-	        <ul>
-	        	@foreach(Cart::content() as $content)
-	            <li class="sbmincart-item sbmincart-item-changed" id="{{$content->rowId}}">
-	            	<div class="sbmincart-details-remove">
-	                    <button type="button" class="sbmincart-remove" data-sbmincart-idx="0"><i class="fa fa-times" aria-hidden="true" style="color: #ff4e00" onclick="cart('<?php echo $content->rowId?>', 'remove')"></i></button>
-	                </div>
-	            	<div class="sbmincart-details-name">{{$content->name}}</div>
+	<script type="text/javascript">
+		$(document).ready(function() {
+		    $('.flash').delay(5000).fadeOut(1000);
+		} );
+	</script>
 
-	                
-
-	                <!-- <div class="sbmincart-details-quantity">
-	                	<input id="{{$content->rowId}}" class="sbmincart-quantity" data-sbmincart-idx="0" name="quantity_1" type="text" pattern="[0-9]*"> 
-	                    
-	                </div> -->
-
-	                <div class="sbmincart-details-remove">
-	                    <button type="button" class="sbmincart-remove" data-sbmincart-idx="0"
-	                    onclick="cart('<?php echo $content->rowId?>', 'decrease')">
-	                    	<i class="fa fa-minus" aria-hidden="true" style="color: red"></i>
-	                    </button>	                    
-	                </div>	
-
-	                <div class="sbmincart-details-remove">
-	                    <button type="button" class="sbmincart-remove" 
-	                    data-sbmincart-idx="0"
-	                    onclick="cart('<?php echo $content->rowId?>', 'increase')">
-	                    	<i class="fa fa-plus" aria-hidden="true" style="color: green"></i>
-	                    </button>	                    
-	                </div>
-
-	                <div class="sbmincart-details-price" style="float: right;"> <span class="sbmincart-price">৳<span id="{{$content->rowId}}qty">{{$content->qty}}</span>x{{$content->price}}</span> </div>
-	                
-	            </li>
-	            @endforeach	            
-	        </ul>
-
-	        <div class="sbmincart-footer">
-	            <div class="sbmincart-subtotal"> Subtotal: ৳<span id="cart_subtotal">{{Cart::subtotal()}}</span> </div>
-	            <a href="{{url('checkout')}}" class="sbmincart-submit">Check Out</a>
-	        </div>
-	        <input type="hidden" name="cmd" value="_cart">
-	        <input type="hidden" name="upload" value="1">
-	        <input type="hidden" name="bn" value="sbmincart_AddToCart_WPS_US"> </form>
-	</div>
 
 	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
@@ -191,10 +117,7 @@
 	    }
 	</script>
 
-
-
-
-	<!-- //cart-js -->
+   <!-- //cart-js -->
 	<script>
 		$(document).ready(function () {
 			$(".sbmincart-closer").click(function () {
@@ -323,23 +246,7 @@
             });
         });
     </script>
-    <script>
-        $(document).ready(function() {
-            /*
-            						var defaults = {
-            							  containerID: 'toTop', // fading element id
-            							containerHoverID: 'toTopHover', // fading element hover id
-            							scrollSpeed: 1200,
-            							easingType: 'linear' 
-            						 };
-            						*/
-
-            $().UItoTop({
-                easingType: 'easeOutQuart'
-            });
-
-        });
-    </script>
+    
     <!--// end-smoth-scrolling -->
 
 	<script src="{{asset('frontend/js/bootstrap.js')}}"></script>

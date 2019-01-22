@@ -15,15 +15,34 @@ trait SentinelTrait
      */
     public function authorize(...$roles)
     {
-        $slug = Sentinel::getUser()->roles()->first()->slug;
-        foreach ($roles as  $role) 
-        {
-            if($slug === strtolower($role))
+        if($user = Sentinel::check()){
+            $slug = $user->roles()->first()->slug;
+            foreach ($roles as  $role) 
             {
-                return true;
-                break;
-            }                
+                if($slug === strtolower($role))
+                {
+                    return true;
+                    break;
+                }                
+            }
         }
+        
         return false;        
+    }
+
+    public function managementAuthorize($roles){
+        if($user = Sentinel::check()){
+            $slug = $user->roles()->first()->slug;
+            foreach ($roles as  $role) 
+            {
+                if($slug === strtolower($role))
+                {
+                    return true;
+                    break;
+                }                
+            }
+        }
+        
+        return false; 
     }
 }

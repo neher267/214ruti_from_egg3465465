@@ -15,6 +15,7 @@
 			   	<li id="menu-academico-avaliacoes" ><a href="{{route('gifts.index')}}">Gifts</a></li>
 			   	<li id="menu-academico-avaliacoes" ><a href="{{route('roles.index')}}">Roles</a></li>		   	
 			   	<li id="menu-academico-avaliacoes" ><a href="{{route('images.index')}}">Images</a></li>			   	
+			   	<li><a href="{{route('register.create')}}">Add User</a></li> 
 			</ul>
 		 </li>
 

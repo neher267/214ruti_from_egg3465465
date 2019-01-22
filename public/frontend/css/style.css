@@ -161,7 +161,7 @@ h1.logo-w3layouts a.navbar-brand {
 .navbar-light .navbar-nav .nav-link.show,
 .navbar-light .navbar-nav .nav-link.active,
 .navbar-light .navbar-nav .nav-link:hover {
-    color: #ff4e00;
+    color: #AD1457;
     border-radius: 0px;
 }
 
@@ -259,7 +259,15 @@ li.number-phone {
 ul.cart-inner-info li {
     display: inline-block;
     list-style: none;
-    margin-left: 2em;
+    margin-left: 1em;
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+    ul.cart-inner-info li {
+        display: inline;
+        list-style: none;
+        margin-left: 0px;
+    }
 }
 
 .top-info ul li {
@@ -1881,7 +1889,7 @@ ul.links li a:hover {
         padding: 0 1em;
     }
     ul.cart-inner-info li {
-        margin-left: 1em;
+        /*margin-left: 1em;*/
     }
     .carousel-caption span {
         font-size: 0.3em;

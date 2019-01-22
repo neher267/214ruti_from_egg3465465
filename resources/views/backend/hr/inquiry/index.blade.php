@@ -40,7 +40,7 @@
                                 <td>
                                     <a href="{{route('inquiries.show', $inquiry)}}" class="btn btn-primary btn-xs"><i class="fa fa-eye"></i></a>
 
-                                    <form action="" method="POST" style="display: inline;">
+                                    <form action="{{route('inquiries.destroy', $inquiry)}}" method="POST" style="display: inline;">
                                         {{ csrf_field() }}
                                         {{ method_field('DELETE') }}
 

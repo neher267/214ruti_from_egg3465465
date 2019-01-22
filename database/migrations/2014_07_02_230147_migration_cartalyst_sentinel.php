@@ -98,15 +98,18 @@ class MigrationCartalystSentinel extends Migration
             $table->increments('id');
             $table->integer('branch_id')->unsigned()->nullable();
             $table->string('mobile');            
+            $table->string('email',191)->nullable();            
             $table->string('name');
             $table->decimal('points',6,0)->default(0);
             $table->string('password');
+            $table->string('profile_image',50)->nullable();
             $table->text('permissions')->nullable();
+            $table->text('interests')->nullable();
             $table->timestamp('last_login')->nullable();            
             $table->timestamps();            
 
             $table->engine = 'InnoDB';
-            $table->unique('mobile');
+            $table->unique('mobile','email');
         });
     }
 

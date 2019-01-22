@@ -66,4 +66,10 @@ class Product extends Model implements Buyable
         return $this->price;
     }
 
+    public function makePopular()
+    {
+        $this->hit_count = $this->hit_count+1;
+        $this->save();
+    }
+
 }

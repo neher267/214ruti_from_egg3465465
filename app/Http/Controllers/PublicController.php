@@ -8,6 +8,7 @@ use App\Models\Hr\Product;
 use App\Models\Hr\Package;
 use App\Models\Settings\Gift;
 use App\Image;
+use Sentinel;
 
 class PublicController extends Controller
 {
@@ -18,31 +19,34 @@ class PublicController extends Controller
         $results = $this->filter();
         $count = $results->count();
         $foods = $results->chunk(4);
+        $page_title = $this->getPageTitle();
 
         $images = Image::with('image_details')->where('type', 'main-slider')->where('status', 1)->get();
-        return view('frontend.pages.index', compact('foods', 'count', 'images'));
+        return view('frontend.pages.index', compact('foods', 'count', 'images', 'page_title'));
     }
 
 
 
     // bread 
     public function menu_item_details(Product $product){
-
+        $page_title = $product->name;
         $current_page = "Menu";
-        return view('frontend.pages.product-details', compact('product'));
+        return view('frontend.pages.product-details', compact('product','page_title'));
     }
 
     public function menu(){
+        $page_title = $this->getPageTitle();
         $results = $this->filter();
         $count = $results->count();
         $foods = $results->chunk(4);
 
-        return view('frontend.pages.index', compact('foods', 'count'));
+        return view('frontend.pages.index', compact('foods', 'count', 'page_title'));
     }
 
 
     public function contact_us(){
-        return view('frontend.pages.contact');
+        $page_title = 'Contact';
+        return view('frontend.pages.contact', compact('page_title'));
     }
 
     // end bread
@@ -101,5 +105,12 @@ class PublicController extends Controller
     public function details()
     {
     	return view('frontend.details');
+    }
+
+    public function my_orders()
+    {
+        $page_title = "My Orders";
+        $orders = Sentinel::getUser()->myOrders;
+        return view('frontend.pages.customer-orders', compact('page_title', 'orders'));
     }
 }

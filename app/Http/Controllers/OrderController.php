@@ -7,7 +7,9 @@ use Illuminate\Http\Request;
 use Cart;
 use App\Order;
 use App\OrderDetail;
+use App\Models\Hr\Product;
 use Sentinel;
+
 
 class OrderController extends Controller
 {
@@ -50,6 +52,9 @@ class OrderController extends Controller
             $orderDetails->quantity = $content->qty;
             $orderDetails->price = $content->price;
             $orderDetails->save();
+            //dd($orderDetails->product);
+            $orderDetails->product->makePopular();
+
         }
         Cart::destroy();
         return redirect('/')->withSuccess('You order is placed successfully! We will contact you soon. Thank you for your order.');      

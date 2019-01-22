@@ -29,6 +29,7 @@ use Illuminate\Database\Eloquent\Model;
 
 use App\Purchase;
 use App\Expense;
+use App\Order;
 
 class EloquentUser extends Model implements RoleableInterface, PermissibleInterface, PersistableInterface, UserInterface
 {
@@ -131,6 +132,16 @@ class EloquentUser extends Model implements RoleableInterface, PermissibleInterf
     public function expenses()
     {
         return $this->hasMany(Expense::class, 'user_id');
+    }
+
+    /**
+    * Returns an array of individual orders
+    * @return array
+    */
+
+    public function myOrders()
+    {
+        return $this->hasMany(Order::class, 'user_id');
     }
 
     //end Neher

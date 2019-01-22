@@ -123,7 +123,7 @@
                                 </div>
                             </div>
 
-                            <div class="tab3">
+                            <!-- <div class="tab3">
                                 <div class="single_page">
                                     <div class="bootstrap-tab-text-grids">
                                         <div class="bootstrap-tab-text-grid">
@@ -151,7 +151,7 @@
                                     </div>
 
                                 </div>
-                            </div>                            
+                            </div>   -->                          
                         </div>
                     </div>
                 </div>

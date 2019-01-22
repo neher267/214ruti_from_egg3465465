@@ -8,6 +8,7 @@ class CheckoutController extends Controller
 {
     public function index()
     {
-    	return view('frontend.pages.checkout');
+    	$page_title = 'Checkout';
+    	return view('frontend.pages.checkout', compact('page_title'));
     }
 }

@@ -21,9 +21,19 @@ Route::post('logout', 'Auth\SentinelLoginController@logout')->middleware('sentin
 Route::group(['namespace'=>'Auth', 'middleware'=>['guest']], function(){
 	Route::post('login','SentinelLoginController@post_login');
 	//Route::get('login','SentinelLoginController@login');
+	Route::get('login',function(){ return back();});
 	Route::get('signup','CustomerRegisterController@create');
 	Route::post('signup','CustomerRegisterController@store');
 });
+
+Route::group(['middleware'=>['sentinel.auth']], function(){
+	Route::get('profile','ProfileController@index');
+	Route::get('profile-update','ProfileController@edit');
+	Route::post('profile-update','ProfileController@update');
+	Route::get('my-orders','PublicController@my_orders');
+
+});
+
 
 Route::group(['middleware'=>['sentinel.auth']], function(){
 	Route::resource('purchases','PurchaseController');
@@ -54,15 +64,18 @@ Route::post('orders','OrderController@store');//customer middleware and needed
 //end cart
 
 //inquiries
-Route::get('dashboard/inquiries', 'InquiryController@index')->middleware('admen');
+//Route::get('dashboard/inquiries', 'InquiryController@index')->middleware('admen');
 Route::post('inquiries', 'InquiryController@store');
-Route::get('dashboard/inquiries/{inquiry}', 'InquiryController@show')->middleware('admen')->name('inquiries.show');
+//Route::get('dashboard/inquiries/{inquiry}', 'InquiryController@show')->middleware('admen')->name('inquiries.show');
 
 //end inquiries
 
 // Admen panel 
 
-Route::group(['prefix'=>'dashboard', 'middleware'=>['sentinel.auth']], function(){
+
+
+
+Route::group(['prefix'=>'dashboard', 'middleware'=>['management']], function(){
 
 	Route::get('/','DashboardController@index');
 	Route::get('profile','ProfileController@index');
@@ -70,6 +83,12 @@ Route::group(['prefix'=>'dashboard', 'middleware'=>['sentinel.auth']], function(
 		Route::resource('packages','PackageController');
 		Route::resource('trets','TretController');
 		Route::resource('register','Auth\SentinelRegisterController');	
+	});
+
+	Route::group(['middleware'=>['admen']], function(){
+		Route::get('inquiries', 'InquiryController@index');
+		Route::get('inquiries/{inquiry}', 'InquiryController@show')->name('inquiries.show');
+		Route::DELETE('inquiries/{inquiry}', 'InquiryController@destroy')->name('inquiries.destroy');
 	});
 
 	Route::group(['namespace'=>'Settings'], function(){

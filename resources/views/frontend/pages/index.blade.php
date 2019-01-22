@@ -12,7 +12,7 @@
 }
 
 .w_nav li a{
-    color: green;
+    color: #AD1457;
 }
 
 </style>
@@ -28,7 +28,6 @@
                 <ul class="w_nav">
                     <li>Sort : </li>
                     <li><a class="active" href="?filter=popular">Popular</a></li>
-                    <li><a href="?filter=new">New </a></li> |
                     <li>Price : </li>
                     <li><a href="?filter=low">Low </a></li>
                     <li><a href="?filter=high">High</a></li>
@@ -58,7 +57,7 @@
                                         <div class="grid_meta">
                                             <div class="product_price">
                                                 <h4>
-    													<a href="{{route('food-detatils', $food)}}">{{$food->name}}</a>
+    													<a class="color-primary" href="{{route('food-detatils', $food)}}">{{$food->name}}</a>
     												</h4>
                                                 <div class="grid-price mt-2">
                                                     <span class="money "> ৳ {{$food->price}} </span>
@@ -97,7 +96,7 @@
                                                 {{ csrf_field() }}
 
                                                 <button type="submit" class="googles-cart pgoogles-cart">
-                                                    <i class="fas fa-cart-plus"></i>
+                                                    <i class="fas fa-cart-plus color-primary"></i>
                                                 </button>
 
                                             </form>

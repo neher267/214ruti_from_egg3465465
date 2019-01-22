@@ -1,27 +1,27 @@
 @extends('frontend.master')
 
 @section('content')
-
-<section class="banner-bottom-wthreelayouts py-lg-5 py-3">
+<section class="banner-bottom-wthreelayouts py-lg-5 py-3" style="min-height: 400px">
     <div class="container">
         <div class="inner-sec-shop px-lg-4 px-3">
             <h3 class="tittle-w3layouts my-lg-4 mt-3">Checkout </h3>
             <div class="checkout-right">
                 <h4>Your shopping cart contains:
-                        <span>{{Cart::count()}} Items</span>
-                    </h4>
+                    <span>{{Cart::count()}} Items</span>
+                </h4>
+                @if(Cart::count()>0)
+                            
                 <table class="timetable_sub">
                     <thead>
                         <tr>
                             <th></th>
-                            <th style="width: 130px">Image</th>
+                            <th>Image</th>
                             <th>Name</th>
                             <th>Quantity</th>                            
-                            <th style="text-align: right; padding-right: 5px;">Unit Price</th>
+                            <th style="text-align: right;">Price</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @if(Cart::count()>0)
                         @foreach(Cart::content() as $food)
                         <tr class="rem1">
                             <td>
@@ -29,53 +29,48 @@
                                     {{csrf_field()}}
 
                                     <input type="hidden" name="rowId" value="{{$food->rowId}}">
-                                    <button type="submit" class="btn" data-sbmincart-idx="0"><i class="fa fa-times" aria-hidden="true" style="color: #ff4e00"></i></button>
+                                    <button type="submit" class="btn btn-xs" data-sbmincart-idx="0"><i class="fa fa-times" aria-hidden="true" style="color: #ff4e00"></i></button>
                                 </form>                                
                             </td>
                             <td class="invert-image">
                                 <a href="single.html">
-                                    <img src="{{asset($food->options->image)}}" alt=" " class="img-responsive" style="height: 70px">
+                                    <img src="{{asset($food->options->image)}}" alt=" " class="img-responsive" style="height: 50px; width: 60px; border-radius: 4px; margin: 1px">
                                 </a>
                             </td>
                             <td class="invert">{{$food->name}}</td>
                             <td>
-                                {{$food->qty}} + 
-                                <form method="post" action="{{url('cart-update')}}" style="display: inline;">
+                                <span>{{$food->qty}}+</span>
+                                <form id="manage_qty" method="post" action="{{url('cart-update')}}" style="display: inline;">
                                     {{csrf_field()}}
 
-                                    <input class="form-control" type="number" name="qty" style=" width: 50px; display: inline; padding: 0px 2px; border-radius: 4px; text-align: center;" placeholder="2">
+                                    <input class="form-control" type="number" name="qty" style=" width: 50px; display: inline; padding: 0px 1px; border-radius: 4px; text-align: center;" placeholder="2">
                                     <input type="hidden" name="rowId" value="{{$food->rowId}}">
-                                    <button class="btn btn-sm" style="padding: 1px 8px">
+                                    <button id="manage_qty_btn" class="btn btn-sm" style="padding: 1px 8px">
                                         <i class="fa fa-retweet" aria-hidden="true" style="color: green;"></i>
                                     </button>
                                 </form>
                             </td>
 
-                            <td class="invert" style="text-align: right; padding-right: 5px;">৳ {{number_format($food->price,2)}}</td>                            
+                            <td class="invert" style="text-align: right;">{{number_format($food->price*$food->qty,2)}}</td>                            
                         </tr> 
-                        @endforeach
-                        @else
-                        <tr>
-                            <td colspan="5" style="text-align: center;">
-                                <h3 style="color: red">Your Cart is empty!</h3>
-                                <a style="color: blue" href="{{url('menu')}}" class="nav-style"><i class="fa fa-shopping-cart"></i> Continue</a>
-                            </td>
-                        </tr>
-                        @endif
+                        @endforeach                        
                     </tbody>
-                    @if(Cart::count()>0)
                     <tfoot>
                         <tr>
                             <td colspan="4" style="text-align: right;">
-                                <strong>Subtotal: </strong>
+                                <strong>Subtotal: ৳</strong>
                             </td>
-                            <td style="text-align: right; padding-right: 5px;">
-                                ৳ {{Cart::subtotal()}}
+                            <td style="text-align: right; font-weight: bold;">
+                                {{Cart::subtotal()}}
                             </td>
                         </tr>
                     </tfoot>
-                    @endif
                 </table>
+                @else
+                <a style="color: #AD1457" href="{{url('menu')}}" class="nav-style">
+                    <i class="fa fa-shopping-cart"></i> Continue Shopping
+                </a>
+                @endif
             </div>
             @if(Cart::count()>0)
             <div class="checkout-left row">

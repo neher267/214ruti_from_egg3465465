@@ -906,8 +906,7 @@ input.checked {
 }
 
 .product_price h4 a {
-	color: #686898;
-    font-size: 0.8em;
+	font-size: 0.8em;
     font-weight: 450;
     font-family: 'Inconsolata', monospace;
 }

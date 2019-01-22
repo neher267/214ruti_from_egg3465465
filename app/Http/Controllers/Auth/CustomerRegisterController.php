@@ -12,7 +12,8 @@ class CustomerRegisterController extends Controller
 	
    	public function create()
    	{
-   		return view('frontend.pages.register');
+         $page_title = "Registration";
+   		return view('frontend.pages.register', compact('page_title'));
    	}
 
    	public function store(CustomerRegistrationRequest $request)

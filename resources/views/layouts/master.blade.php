@@ -97,10 +97,15 @@
 </script>
 
 <script type="text/javascript">
-function alertUser($message)
-{
-	return confirm('Are you sure want to '+$message);
-}	
+	function alertUser($message)
+	{
+		return confirm('Are you sure want to '+$message);
+	}	
+
+	function confirm_user($message)
+	{
+		return confirm('Are you sure want to '+$message+' it?');
+	}
 </script>
 <!-- end js Neher -->
 
