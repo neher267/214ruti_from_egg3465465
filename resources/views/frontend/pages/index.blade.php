@@ -56,9 +56,9 @@
                                     <div class="info-product-price">
                                         <div class="grid_meta">
                                             <div class="product_price">
-                                                <h4>
-    													<a class="color-primary" href="{{route('food-detatils', $food)}}">{{$food->name}}</a>
-    												</h4>
+                                                <h4 style="min-height: 57px;">
+                                                    <a class="color-primary" href="{{route('food-detatils', $food)}}">{{$food->name}}</a>
+    											</h4>
                                                 <div class="grid-price mt-2">
                                                     <span class="money "> ৳ {{$food->price}} </span>
                                                 </div>

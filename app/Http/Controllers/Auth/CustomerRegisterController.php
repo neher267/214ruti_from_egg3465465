@@ -23,6 +23,6 @@ class CustomerRegisterController extends Controller
    			$role->users()->attach($user);    
    			Sentinel::authenticate($request->all());   
    		}
-        return redirect('/')->withSuccess('Success!');
+        return redirect('checkout')->withSuccess('Success!');
    	}
 }

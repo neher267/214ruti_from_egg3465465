@@ -49,7 +49,8 @@
                     </div>
                 </div>
             </div>
-            <div class="contact_grid_right">
+            <div class="row" style="margin-top: 15px;">
+                <div class="contact_grid_right">
                 <form action="{{url('inquiries')}}" method="post">
                     {{ csrf_field() }}
 
@@ -57,27 +58,28 @@
                         <div class="col-md-6 con-left">
                             <div class="form-group">
                                 <label class="my-2">Name</label>
-                                <input class="form-control" type="text" name="name" placeholder="" required="">
+                                <input class="form-control" type="text" name="name" placeholder="Youre Name" required="">
                             </div>
                             <div class="form-group">
                                 <label>Email</label>
-                                <input class="form-control" type="email" name="email" placeholder="" required="">
+                                <input class="form-control" type="email" name="email" placeholder="Your Email Address" required="">
                             </div>
                             <div class="form-group">
                                 <label class="my-2">Subject</label>
-                                <input class="form-control" type="text" name="subject" placeholder="" required="">
+                                <input class="form-control" type="text" name="subject" placeholder="Message Subject" required="">
                             </div>
                         </div>
                         <div class="col-md-6 con-right">
                             <div class="form-group">
-                                <label>Message</label>
-                                <textarea name="message" id="textarea" placeholder="Your Message" required></textarea>
+                                <label class="my-2">Message</label>
+                                <textarea name="message" id="textarea" placeholder="Your Message" required style="margin: 0px"></textarea>
                             </div>
                             <input class="form-control" type="submit" value="Submit">
 
                         </div>
                     </div>
                 </form>
+            </div>
             </div>
         </div>
     </div>

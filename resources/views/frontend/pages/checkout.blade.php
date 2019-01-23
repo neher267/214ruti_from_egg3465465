@@ -1,12 +1,12 @@
 @extends('frontend.master')
 
 @section('content')
-<section class="banner-bottom-wthreelayouts py-lg-5 py-3" style="min-height: 400px">
+<section class="banner-bottom-wthreelayouts py-3 py-5">
     <div class="container">
-        <div class="inner-sec-shop px-lg-4 px-3">
-            <h3 class="tittle-w3layouts my-lg-4 mt-3">Checkout </h3>
+        <div class="inner_sec contact_grid_right" style="min-height: 400px">
+            <p class="sub text-center mb-lg-5 mb-3">Checkout</p>
             <div class="checkout-right">
-                <h4>Your shopping cart contains:
+                <h4 class="text-center">Your shopping cart contains:
                     <span>{{Cart::count()}} Items</span>
                 </h4>
                 @if(Cart::count()>0)
@@ -67,9 +67,9 @@
                     </tfoot>
                 </table>
                 @else
-                <a style="color: #AD1457" href="{{url('menu')}}" class="nav-style">
+                <p class="text-center"><a style="color: #AD1457" href="{{url('menu')}}" class="nav-style">
                     <i class="fa fa-shopping-cart"></i> Continue Shopping
-                </a>
+                </a></p>
                 @endif
             </div>
             @if(Cart::count()>0)
@@ -128,8 +128,9 @@
                 <div class="clearfix"> </div>
             </div>
             @endif
+            
         </div>
-
     </div>
 </section>
+
 @endsection

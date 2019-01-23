@@ -3,13 +3,17 @@
 namespace App\Models\Hr;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Comment;
 use App\Image;
 use App\Models\Settings\Category;
 use App\Models\Hr\Price;
 use Gloudemans\Shoppingcart\Contracts\Buyable;
+use App\Traits\CommentableTrait;
 
 class Product extends Model implements Buyable
 {
+
+    use CommentableTrait;
 
     public function getRouteKeyName()
     {
@@ -20,6 +24,8 @@ class Product extends Model implements Buyable
     {
     	return $this->belongsTo(Category::class);
     }
+
+    
 
     public function images()
     {

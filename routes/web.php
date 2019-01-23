@@ -6,6 +6,16 @@
 |--------------------------------------------------------------------------
 |
 */
+use App\Models\Hr\Product;
+
+Route::get('comments', function(){
+	$product = Product::find(1);
+	$page_title = 'Comments';
+	return view('comments', compact('product', 'page_title'));
+});
+
+
+
 
 Route::get('/', 'PublicController@index');
 Route::get('contact', 'PublicController@contact_us');

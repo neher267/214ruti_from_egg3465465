@@ -1,6 +1,11 @@
 @extends('frontend.master')
 
 @section('content')
+<style type="text/css">
+    .comment .comment {
+        margin-left: 35px;
+    }
+</style>
 <section class="banner-bottom-wthreelayouts py-lg-5 py-3">
     <div class="container">
         <div class="inner-sec-shop pt-lg-4 pt-3">
@@ -99,7 +104,7 @@
                         <ul class="resp-tabs-list">
                             <!-- <li>Description</li> -->
                             <li>Informations </li>
-                            <!-- <li>Reviews</li>                             -->
+                            <li>Reviews</li>                            
                         </ul>
                         <div class="resp-tabs-container">
                             <!--/tab_one-->
@@ -123,35 +128,16 @@
                                 </div>
                             </div>
 
-                            <!-- <div class="tab3">
+                            
+
+                            <div class="tab3">
                                 <div class="single_page">
                                     <div class="bootstrap-tab-text-grids">
-                                        <div class="bootstrap-tab-text-grid">
-                                            <div class="bootstrap-tab-text-grid-left">
-                                                <img src="{{asset('frontend/images/team1.jpg')}}" alt=" " class="img-fluid">
-                                            </div>
-                                            <div class="bootstrap-tab-text-grid-right">
-                                                <ul>
-                                                    <li><a href="#">Admin</a></li>
-                                                    <li><a href="#"><i class="fa fa-reply-all" aria-hidden="true"></i> Reply</a></li>
-                                                </ul>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elPellentesque vehicula augue eget.Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit.</p>
-                                            </div>
-                                            <div class="clearfix"> </div>
-                                        </div>
-                                        <div class="add-review">
-                                            <h4>add a review</h4>
-                                            <form action="#" method="post">
-                                                <input class="form-control" type="text" name="Name" placeholder="Enter your email..." required="">
-                                                <input class="form-control" type="email" name="Email" placeholder="Enter your email..." required="">
-                                                <textarea name="Message" required=""></textarea>
-                                                <input type="submit" value="SEND">
-                                            </form>
-                                        </div>
+                                        @include('frontend.partials._comments')
                                     </div>
 
                                 </div>
-                            </div>   -->                          
+                            </div>                            
                         </div>
                     </div>
                 </div>

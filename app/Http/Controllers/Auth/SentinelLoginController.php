@@ -29,7 +29,7 @@ class SentinelLoginController extends Controller
     	if( $user = Sentinel::check())
     	{
             if ($user->roles()->first()->slug == 'customer') {
-                return redirect('/');
+                return redirect('checkout');
             }
             else{
                 return redirect('/dashboard');

@@ -18,10 +18,12 @@
                                 <label class="my-2">Address</label>
                                 <input class="form-control" type="text" name="address" placeholder="Format : Road,House No,Area,Postal Code" required value="{{$user->address}}">
                             </div>
+                            @if(empty($user->email))
                             <div class="form-group">
                                 <label>Email</label>
                                 <input class="form-control" type="email" name="email" placeholder="Your Email">
                             </div>
+                            @endif
                             <div class="form-group">
                                 <label class="my-2">Profile Picture</label>
                                 <input class="form-control" type="file" name="profile_image">

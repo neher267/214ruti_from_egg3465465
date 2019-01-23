@@ -1159,7 +1159,7 @@ ul.footer_list_icons.single_in li a:hover {
 	text-transform: uppercase;
 	font-size: 1em;
 	color: #212121;
-	margin: 2em 0 1em 0;
+	margin: 1em 0 1em 0;
 	font-weight: 600;
 	letter-spacing: 1px;
 }
@@ -1169,14 +1169,15 @@ ul.footer_list_icons.single_in li a:hover {
 	margin: 2em 0 0;
 }
 
+
 .bootstrap-tab-text-grid-left {
 	float: left;
-	width: 14%;
+	width: 5%;
 }
 
 .bootstrap-tab-text-grid-right {
 	float: right;
-	width: 83%;
+	width: 94%;
 }
 
 .bootstrap-tab-text-grid-right ul li {
@@ -1204,18 +1205,18 @@ ul.footer_list_icons.single_in li a:hover {
 }
 
 .bootstrap-tab-text-grids {
-	margin: 3em 0 0 0em;
+	margin: 0.5em 0 0 0em;
 }
 
 .bootstrap-tab-text-grid-right p {
-	margin: 2em 0 0;
+	margin: 0.5em 0 0;
 	color: #545454;
 	font-size: 0.9em;
 	line-height: 2sem;
 }
 
 .bootstrap-tab-text-grid:nth-child(2) {
-	margin: 3em 0 0;
+	margin: 0.5em 0 0;
 }
 
 .add-review form {
@@ -1300,7 +1301,7 @@ ul.footer_list_icons.single_in li a:hover {
 }
 
 .single_page p {
-	line-height: 2em;
+	line-height: 20px;
 	color: #888;
 }
 
